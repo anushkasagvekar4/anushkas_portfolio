@@ -1,4 +1,6 @@
+"use client";
 import { Mail } from "lucide-react";
+import { useState } from "react";
 
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -42,72 +44,118 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    // Simulate network request
+    setTimeout(() => {
+      setStatus("success");
+      // Reset form after a few seconds
+      setTimeout(() => setStatus("idle"), 3000);
+    }, 1500);
+  };
+
   return (
-    <section className="flex flex-col gap-12 py-12 min-h-[60vh] justify-center">
-      <div className="flex flex-col gap-2 relative z-10">
+    <section className="flex flex-col gap-12 py-12 min-h-[70vh] justify-center items-center md:items-start w-full max-w-5xl mx-auto">
+      <div className="flex flex-col gap-2 relative z-10 text-center md:text-left">
         <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl lg:text-7xl">
           Let's build <span className="text-primary italic">something</span>.
         </h1>
         <p className="text-lg text-muted-foreground mt-4 max-w-xl">
-          Interested in AI automation, full-stack systems, or collaborating on a complex problem? Reach out directly.
+          Interested in AI automation, full-stack systems, or collaborating on a complex problem? Drop a message or reach out directly.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 max-w-4xl relative z-10">
-        <a 
-          href="mailto:anushkasagvekar1211@gmail.com"
-          className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 transition-all hover:border-primary/50 hover:bg-card hover:-translate-y-1"
-        >
-          <Mail size={24} className="text-primary" />
-          <div>
-            <div className="font-bold text-foreground">Email</div>
-            <div className="text-sm font-mono text-muted-foreground break-all">anushkasagvekar1211@gmail.com</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full relative z-10 mt-4">
+        {/* Contact Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm shadow-xl">
+          <h2 className="text-xl font-bold text-foreground">Send a message</h2>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Name</label>
+            <input required type="text" className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="John Doe" />
           </div>
-        </a>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Email</label>
+            <input required type="email" className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="john@example.com" />
+          </div>
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Message</label>
+            <textarea required rows={4} className="w-full rounded-xl border border-border bg-background p-4 outline-none focus:border-primary/50 text-sm text-foreground resize-none transition-colors" placeholder="How can we help you?" />
+          </div>
+          
+          <button 
+            type="submit" 
+            disabled={status !== "idle"} 
+            className="mt-2 flex h-12 w-full items-center justify-center rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 disabled:opacity-50 transition-all active:scale-[0.98]"
+          >
+            {status === "idle" ? "Send Message" : status === "submitting" ? "Sending..." : "Message Sent ✓"}
+          </button>
+        </form>
 
-        <a 
-          href="https://github.com/anushkasagvekar4"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 transition-all hover:border-foreground/50 hover:bg-card hover:-translate-y-1"
-        >
-          <GithubIcon className="text-foreground" />
-          <div>
-            <div className="font-bold text-foreground">GitHub</div>
-            <div className="text-sm font-mono text-muted-foreground">anushkasagvekar4</div>
-          </div>
-        </a>
+        {/* Links & Terminal */}
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
+            <a 
+              href="mailto:anushkasagvekar1211@gmail.com"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-primary/50 hover:bg-card hover:-translate-y-1"
+            >
+              <div className="p-3 bg-primary/10 rounded-xl text-primary"><Mail size={20} /></div>
+              <div>
+                <div className="font-bold text-foreground text-sm">Email</div>
+                <div className="text-xs font-mono text-muted-foreground">anushkasagvekar1211@gmail.com</div>
+              </div>
+            </a>
 
-        <a 
-          href="https://linkedin.com/in/anushka-sagvekar" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 transition-all hover:border-[#60a5fa]/50 hover:bg-card hover:-translate-y-1"
-        >
-          <LinkedinIcon className="text-[#60a5fa]" />
-          <div>
-            <div className="font-bold text-foreground">LinkedIn</div>
-            <div className="text-sm font-mono text-muted-foreground">/in/anushka-sagvekar</div>
+            <a 
+              href="https://github.com/anushkasagvekar4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-foreground/50 hover:bg-card hover:-translate-y-1"
+            >
+              <div className="p-3 bg-muted rounded-xl text-foreground"><GithubIcon width={20} height={20} /></div>
+              <div>
+                <div className="font-bold text-foreground text-sm">GitHub</div>
+                <div className="text-xs font-mono text-muted-foreground">anushkasagvekar4</div>
+              </div>
+            </a>
+
+            <a 
+              href="https://linkedin.com/in/anushka-sagvekar" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-[#60a5fa]/50 hover:bg-card hover:-translate-y-1"
+            >
+              <div className="p-3 bg-[#60a5fa]/10 rounded-xl text-[#60a5fa]"><LinkedinIcon width={20} height={20} /></div>
+              <div>
+                <div className="font-bold text-foreground text-sm">LinkedIn</div>
+                <div className="text-xs font-mono text-muted-foreground">/in/anushka-sagvekar</div>
+              </div>
+            </a>
           </div>
-        </a>
+
+          {/* Decorative Terminal Element */}
+          <div className="rounded-2xl border border-border bg-[#0c0c10] p-6 font-mono text-xs shadow-xl h-full flex flex-col">
+            <div className="flex gap-2 mb-4">
+              <div className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
+              <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+              <div className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+            </div>
+            <div className="text-muted-foreground leading-relaxed">
+              <span className="text-primary">~</span> ssh root@anushkaos.dev<br/>
+              password: <span className="text-muted-foreground/30">********</span><br/>
+              <span className="text-[#2dd4bf] mt-2 block">Welcome to the system. Running diagnostic ping... OK.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Decorative Terminal Element */}
-      <div className="mt-8 rounded-2xl border border-border bg-[#0c0c10] p-6 max-w-2xl font-mono text-sm shadow-xl relative z-10">
-        <div className="flex gap-2 mb-4">
-          <div className="h-3 w-3 rounded-full bg-destructive/80" />
-          <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-          <div className="h-3 w-3 rounded-full bg-emerald-500/80" />
-        </div>
-        <div className="text-muted-foreground">
-          <span className="text-primary">~</span> ssh root@anushkaos.dev<br/>
-          password: <span className="text-muted-foreground/30">********</span><br/>
-          <span className="text-[#2dd4bf]">Welcome back, Admin. System is running at optimal efficiency. 🚀</span>
-        </div>
-      </div>
-      
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] max-w-3xl bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] max-w-4xl bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 }

@@ -6,11 +6,13 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { label: "Home", href: "/" },
+  { label: "Experience", href: "/experience" },
   { label: "Projects", href: "/projects" },
   { label: "Workflows", href: "/workflows" },
   { label: "Thinking", href: "/thinking" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 export function Navbar() {
   const pathname = usePathname();
