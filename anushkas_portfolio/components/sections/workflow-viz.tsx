@@ -18,9 +18,9 @@ import { Sparkles, FileAudio, FileJson, CheckCircle } from "lucide-react";
 
 // Custom node styles to match the OS theme
 const nodeStyle = {
-  background: "#111118",
-  color: "#f0f0f8",
-  border: "1px solid #1e1e28",
+  background: "var(--card)",
+  color: "var(--foreground)",
+  border: "1px solid var(--border)",
   borderRadius: "12px",
   padding: "16px",
   fontSize: "12px",
@@ -117,7 +117,7 @@ export function WorkflowViz() {
         </p>
       </div>
 
-      <div className="h-[400px] w-full rounded-3xl border border-border bg-[#0c0c10] overflow-hidden relative">
+      <div className="h-[400px] w-full rounded-3xl border border-border bg-card overflow-hidden relative">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -129,11 +129,11 @@ export function WorkflowViz() {
         >
           <Controls className="bg-card border-border fill-foreground" />
           <MiniMap 
-            nodeColor="#a78bfa" 
-            maskColor="rgba(12, 12, 16, 0.8)" 
+            nodeColor="var(--primary)" 
+            maskColor="var(--background)" 
             className="bg-card border-border" 
           />
-          <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#1e1e28" />
+          <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="var(--border)" />
         </ReactFlow>
       </div>
     </section>

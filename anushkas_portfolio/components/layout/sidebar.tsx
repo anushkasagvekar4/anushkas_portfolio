@@ -6,6 +6,8 @@ import { LayoutGrid, MessageSquare, Activity, Settings, Sun, Moon } from "lucide
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
+import { useTheme } from "next-themes";
+
 const navItems = [
   { icon: LayoutGrid, label: "Dashboard", href: "/" },
   { icon: MessageSquare, label: "Chat", href: "/chat" },
@@ -14,6 +16,7 @@ const navItems = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -57,8 +60,12 @@ export function Sidebar() {
         <button className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
           <Settings size={20} />
         </button>
-        <button className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
-          <Moon size={20} />
+        <button 
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
     </aside>

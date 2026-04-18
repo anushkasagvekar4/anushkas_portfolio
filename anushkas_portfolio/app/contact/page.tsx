@@ -155,14 +155,14 @@ export default function ContactPage() {
           </div>
 
           {/* Decorative Terminal Element */}
-          <div className="rounded-2xl border border-border bg-[#0c0c10] p-6 font-mono text-xs shadow-xl h-full flex flex-col">
+          <div className="rounded-2xl border border-border bg-slate-950 p-6 font-mono text-xs shadow-xl h-full flex flex-col">
             <div className="flex gap-2 mb-4">
               <div className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
               <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
               <div className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
             </div>
             <div className="text-muted-foreground leading-relaxed">
-              <span className="text-primary">~</span> ssh root@anushkaos.dev<br/>
+              <span className="text-secondary">~</span> ssh root@anushkaos.dev<br/>
               password: <span className="text-muted-foreground/30">********</span><br/>
               <span className="text-[#2dd4bf] mt-2 block">Welcome to the system. Running diagnostic ping... OK.</span>
             </div>
@@ -171,7 +171,7 @@ export default function ContactPage() {
       </div>
 
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] max-w-4xl bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] max-w-4xl bg-primary/10 blur-[120px] rounded-full pointer-events-none opacity-50 dark:opacity-100" />
     </section>
   );
 }
