@@ -1,5 +1,5 @@
 "use client";
-import { Mail } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -97,7 +97,6 @@ export default function ContactPage() {
           </button>
         </form>
 
-        {/* Links & Terminal */}
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <a 
@@ -112,30 +111,47 @@ export default function ContactPage() {
             </a>
 
             <a 
-              href="https://github.com/anushkasagvekar4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-foreground/50 hover:bg-card hover:-translate-y-1"
+              href="tel:+918999445977"
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-[#34d399]/50 hover:bg-card hover:-translate-y-1"
             >
-              <div className="p-3 bg-muted rounded-xl text-foreground"><GithubIcon width={20} height={20} /></div>
+              <div className="p-3 bg-[#34d399]/10 rounded-xl text-[#34d399]"><Phone size={20} /></div>
               <div>
-                <div className="font-bold text-foreground text-sm">GitHub</div>
-                <div className="text-xs font-mono text-muted-foreground">anushkasagvekar4</div>
+                <div className="font-bold text-foreground text-sm">Phone</div>
+                <div className="text-xs font-mono text-muted-foreground">+91 89994 45977</div>
               </div>
             </a>
 
-            <a 
-              href="https://linkedin.com/in/anushka-sagvekar" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-[#60a5fa]/50 hover:bg-card hover:-translate-y-1"
+            <div 
+              className="flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-[#f472b6]/50 hover:bg-card hover:-translate-y-1 cursor-default"
             >
-              <div className="p-3 bg-[#60a5fa]/10 rounded-xl text-[#60a5fa]"><LinkedinIcon width={20} height={20} /></div>
+              <div className="p-3 bg-[#f472b6]/10 rounded-xl text-[#f472b6]"><MapPin size={20} /></div>
               <div>
-                <div className="font-bold text-foreground text-sm">LinkedIn</div>
-                <div className="text-xs font-mono text-muted-foreground">/in/anushka-sagvekar</div>
+                <div className="font-bold text-foreground text-sm">Location</div>
+                <div className="text-xs font-mono text-muted-foreground">Sion, Mumbai, India</div>
               </div>
-            </a>
+            </div>
+
+            <div className="flex gap-4">
+              <a 
+                href="https://github.com/anushkasagvekar4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 rounded-2xl border border-border bg-card/50 p-4 transition-all hover:border-foreground/50 hover:bg-card hover:-translate-y-1"
+              >
+                <GithubIcon width={20} height={20} />
+                <div className="font-bold text-foreground text-xs">GitHub</div>
+              </a>
+
+              <a 
+                href="https://linkedin.com/in/anushkasagvekar" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 rounded-2xl border border-border bg-card/50 p-4 transition-all hover:border-[#60a5fa]/50 hover:bg-card hover:-translate-y-1"
+              >
+                <div className="text-[#60a5fa]"><LinkedinIcon width={20} height={20} /></div>
+                <div className="font-bold text-foreground text-xs">LinkedIn</div>
+              </a>
+            </div>
           </div>
 
           {/* Decorative Terminal Element */}
