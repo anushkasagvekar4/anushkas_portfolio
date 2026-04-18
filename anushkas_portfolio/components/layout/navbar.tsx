@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { FileText } from "lucide-react";
 
 const links = [
   { label: "Home", href: "/" },
@@ -47,6 +48,15 @@ export function Navbar() {
       </nav>
 
       <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+        <a 
+          href="https://lingering-sound-567.linkyhost.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hidden md:flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 font-bold text-primary transition-all hover:bg-primary/20"
+        >
+          <FileText size={12} />
+          <span>Resume</span>
+        </a>
         <span className="flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
           v1.0 - Live

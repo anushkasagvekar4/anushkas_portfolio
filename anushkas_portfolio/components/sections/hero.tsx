@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Terminal, ArrowRight, Send } from "lucide-react";
+import { Sparkles, Terminal, ArrowRight, Send, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const metrics = [
@@ -16,9 +16,20 @@ export function Hero() {
     <section className="relative flex flex-col gap-12 pt-8">
       {/* Name Title */}
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-primary">
-          <Terminal size={12} />
-          AI Full Stack Developer • Mumbai
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-primary">
+            <Terminal size={12} />
+            AI Full Stack Developer • Mumbai
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Open to Work
+            </span>
+            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+              Freelance • Full-Time • Remote • Hybrid • Onsite
+            </span>
+          </div>
         </div>
         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
           Building <span className="text-primary italic">AI systems</span> that ship to production
@@ -26,6 +37,17 @@ export function Hero() {
         <p className="max-w-xl text-sm text-muted-foreground md:text-base">
           35+ real-world apps • Automation • CRM • AI workflows. AnushkaOS helps visitors experience building through direct interaction.
         </p>
+        <div className="flex items-center gap-4 mt-2">
+          <a 
+            href="https://lingering-sound-567.linkyhost.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+          >
+            <FileText size={16} />
+            Download Resume
+          </a>
+        </div>
       </div>
 
       {/* Metrics Grid */}
