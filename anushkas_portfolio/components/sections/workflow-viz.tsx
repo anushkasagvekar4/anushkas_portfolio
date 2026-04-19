@@ -16,20 +16,19 @@ import {
 import "@xyflow/react/dist/style.css";
 import { Sparkles, FileAudio, FileJson, CheckCircle } from "lucide-react";
 
-// Custom node styles to match the OS theme
 const nodeStyle = {
   background: "var(--card)",
   color: "var(--foreground)",
   border: "1px solid var(--border)",
-  borderRadius: "12px",
-  padding: "16px",
+  borderRadius: "1rem",
+  padding: "1.25rem",
   fontSize: "12px",
   fontFamily: "var(--font-inter)",
-  minWidth: "150px",
+  minWidth: "160px",
   display: "flex",
   flexDirection: "column" as const,
   alignItems: "center" as const,
-  gap: "8px",
+  gap: "0.5rem",
 };
 
 const initialNodes = [
@@ -110,10 +109,10 @@ export function WorkflowViz() {
     <section className="flex flex-col gap-8 py-12">
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-          AI Workflows <span className="font-mono text-sm text-muted-foreground ml-2">/ systems.map</span>
+          The Creative Process
         </h2>
-        <p className="text-muted-foreground">
-          Interactive view of the Voice-to-Form pipeline built for AI Mishqat.
+        <p className="text-muted-foreground italic">
+          An interactive map of how I engineer intelligence into production systems.
         </p>
       </div>
 

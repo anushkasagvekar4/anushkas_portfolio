@@ -20,25 +20,25 @@ export function Hero() {
       <div className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
         <div className="flex flex-col gap-4 flex-1">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-primary">
-              <Terminal size={12} />
-              AI Full Stack Developer • Mumbai
+            <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-primary">
+              <Sparkles size={12} />
+              Full Stack AI Engineer • Mumbai
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Open to Work
+              <span className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-bold text-primary uppercase tracking-widest">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                Open for Collaboration
               </span>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Freelance • Full-Time • Remote • Hybrid • Onsite
+              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
+                Freelance • Full-Time • Remote
               </span>
             </div>
           </div>
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Building <span className="text-primary italic">AI systems</span> that ship to production
+            Engineering <span className="text-primary italic">intelligent</span> experiences
           </h1>
           <p className="max-w-xl text-sm text-muted-foreground md:text-base">
-            35+ real-world apps • Automation • CRM • AI workflows. AnushkaOS helps visitors experience building through direct interaction.
+            I build production-ready AI systems that solve real human problems. From automation to immersive interfaces, I turn ideas into high-performance reality.
           </p>
           <div className="flex items-center gap-4 mt-2">
             <a 
@@ -100,21 +100,31 @@ export function Hero() {
         ))}
       </div>
 
-      {/* Ask AI Section */}
+      {/* Attention-Grabbing AI Assistant Section */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
         transition={{ delay: 0.5 }}
-        className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 md:p-8"
+        className="relative overflow-hidden rounded-3xl border border-border bg-card/30 p-6 md:p-8 backdrop-blur-md"
       >
-        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
         
-        <div className="relative flex flex-col gap-6">
+        <div className="relative flex flex-col gap-8">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-              Ask Anushka AI
-            </h3>
-            <Sparkles size={16} className="text-primary" />
+            <div className="flex flex-col gap-1">
+              <h3 className="text-sm font-bold text-foreground">
+                Anushka's Studio Assistant
+              </h3>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
+                Ask about my projects, stack, or availability
+              </p>
+            </div>
+            <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] font-bold text-primary uppercase">Active</span>
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">

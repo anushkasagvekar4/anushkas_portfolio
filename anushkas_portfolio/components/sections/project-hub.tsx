@@ -28,13 +28,10 @@ export function ProjectHub() {
     <section className="flex flex-col gap-10">
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-          Projects{" "}
-          <span className="font-mono text-sm text-muted-foreground ml-2">
-            / {filtered.length} shipped
-          </span>
+          Featured Projects
         </h2>
-        <p className="text-muted-foreground">
-          Real-world apps — each one measuring impact, not just output.
+        <p className="text-muted-foreground italic">
+          Selected works showcasing the intersection of AI and human-centered design.
         </p>
       </div>
 
@@ -107,7 +104,7 @@ export function ProjectHub() {
                 {project.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-lg bg-muted/60 px-2.5 py-0.5 text-[10px] font-mono text-muted-foreground"
+                    className="rounded-lg bg-muted/60 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted"
                   >
                     {tech}
                   </span>

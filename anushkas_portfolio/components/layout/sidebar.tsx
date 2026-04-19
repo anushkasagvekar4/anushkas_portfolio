@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, MessageSquare, Activity, Settings, Sun, Moon } from "lucide-react";
+import { Home, Folder, Lightbulb, Mail, Settings, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
 import { useTheme } from "next-themes";
 
 const navItems = [
-  { icon: LayoutGrid, label: "Dashboard", href: "/" },
-  { icon: MessageSquare, label: "Chat", href: "/chat" },
-  { icon: Activity, label: "Activity", href: "/activity" },
+  { icon: Home, label: "Home", href: "/" },
+  { icon: Folder, label: "Projects", href: "/projects" },
+  { icon: Lightbulb, label: "Insights", href: "/thinking" },
+  { icon: Mail, label: "Contact", href: "/contact" },
 ];
 
 export function Sidebar() {
@@ -30,9 +31,9 @@ export function Sidebar() {
       <div className="flex flex-1 flex-col items-center gap-8">
         <Link 
           href="/" 
-          className="group flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 transition-colors hover:bg-primary/20"
+          className="group flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 transition-all hover:bg-primary/20 hover:scale-105"
         >
-          <div className="h-2 w-2 rounded-full bg-primary group-hover:animate-pulse" />
+          <div className="h-2 w-2 rounded-full bg-primary" />
         </Link>
 
         <nav className="flex flex-col gap-4">

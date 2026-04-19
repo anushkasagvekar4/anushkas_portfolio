@@ -49,9 +49,9 @@ export function Experience() {
     <section className="flex flex-col gap-12 py-12">
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-          Experience <span className="text-muted-foreground font-mono text-sm ml-2">/ work-history.log</span>
+          Experience
         </h2>
-        <p className="text-muted-foreground">My professional journey in AI and Software Engineering.</p>
+        <p className="text-muted-foreground italic">Building my journey in AI and Software Engineering.</p>
       </div>
 
       <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary before:via-border before:to-transparent md:before:ml-6">
@@ -79,7 +79,7 @@ export function Experience() {
                     @{exp.company} • {exp.location}
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full">
+                <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full uppercase tracking-wider">
                   <Calendar size={12} />
                   {exp.period}
                 </div>

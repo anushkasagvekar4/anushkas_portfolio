@@ -11,8 +11,8 @@ const links = [
   { label: "Home", href: "/" },
   { label: "Experience", href: "/experience" },
   { label: "Projects", href: "/projects" },
-  { label: "Workflows", href: "/workflows" },
-  { label: "Thinking", href: "/thinking" },
+  { label: "Process", href: "/workflows" },
+  { label: "Insights", href: "/thinking" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -32,7 +32,7 @@ export function Navbar() {
     <header className="fixed right-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-md md:left-16 md:w-auto">
       <div className="flex items-center gap-4">
         <Link href="/" className="text-lg font-bold tracking-tight text-foreground">
-          Anushka<span className="text-primary">OS.dev</span>
+          Anushka<span className="text-primary">.Studio</span>
         </Link>
       </div>
 
@@ -86,9 +86,9 @@ export function Navbar() {
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <span className="hidden items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground md:flex">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          v1.0
+        <span className="hidden items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-muted-foreground md:flex">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/50" />
+          Mumbai, IN
         </span>
       </div>
 

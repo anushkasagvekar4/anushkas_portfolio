@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Mode Palette */
-  --background: #fafafa;
+  /* Human-Friendly Light Mode Palette */
+  --background: #fdfdfd;
   --foreground: #0f172a;
   --card: #ffffff;
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #8b5cf6;
+  --primary: #6366f1; /* Indigo */
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
+  --secondary: #f8fafc;
   --secondary-foreground: #1e293b;
-  --muted: #f1f5f9;
+  --muted: #f8fafc;
   --muted-foreground: #64748b;
   --accent: #f1f5f9;
   --accent-foreground: #1e293b;
@@ -20,8 +20,8 @@
   --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #8b5cf6;
-  --radius: 0.75rem;
+  --ring: #6366f1;
+  --radius: 1rem; /* Slightly softer corners */
 
   /* Accent Colors */
   --ai-badge: #0d9488;
@@ -30,31 +30,31 @@
 }
 
 .dark {
-  /* Dark Mode Palette */
-  --background: #0c0c10;
-  --foreground: #f0f0f8;
-  --card: #111118;
-  --card-foreground: #f0f0f8;
-  --popover: #111118;
-  --popover-foreground: #f0f0f8;
-  --primary: #a78bfa;
+  /* Human-Friendly Dark Mode Palette */
+  --background: #0a0a0c;
+  --foreground: #f8fafc;
+  --card: #121216;
+  --card-foreground: #f8fafc;
+  --popover: #121216;
+  --popover-foreground: #f8fafc;
+  --primary: #818cf8; /* Softer Indigo */
   --primary-foreground: #0c0c10;
-  --secondary: #1e1e28;
-  --secondary-foreground: #f0f0f8;
-  --muted: #1e1e28;
-  --muted-foreground: #6d6d80;
-  --accent: #1e1e28;
-  --accent-foreground: #f0f0f8;
-  --destructive: #ff5555;
+  --secondary: #1a1a1e;
+  --secondary-foreground: #f8fafc;
+  --muted: #1a1a1e;
+  --muted-foreground: #94a3b8;
+  --accent: #1e1e24;
+  --accent-foreground: #f8fafc;
+  --destructive: #cc4444;
   --destructive-foreground: #f0f0f8;
-  --border: #1e1e28;
-  --input: #1e1e28;
-  --ring: #a78bfa;
+  --border: #22222a;
+  --input: #22222a;
+  --ring: #818cf8;
 
   /* Accent Colors */
-  --ai-badge: #2dd4bf;
-  --fullstack-badge: #fb923c;
-  --automation-badge: #a78bfa;
+  --ai-badge: #14b8a6;
+  --fullstack-badge: #f97316;
+  --automation-badge: #818cf8;
 }
 
 @theme inline {
@@ -83,6 +83,24 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Subtle Global Grain Texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.dark body::before {
+  opacity: 0.05;
 }
 
 /* Premium Scrollbar */
@@ -96,20 +114,25 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e1e28;
+  background: var(--muted);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a2a3a;
+  background: var(--border);
 }
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(17, 17, 24, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(30, 30, 40, 0.5);
+  background: rgba(var(--card-rgb), 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--border-rgb), 0.3);
+}
+
+.dark .glass {
+  background: rgba(18, 18, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Selection */
