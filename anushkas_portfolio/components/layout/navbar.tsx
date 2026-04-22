@@ -60,7 +60,7 @@ export function Navbar() {
 
       <div className="flex items-center gap-4">
         {/* Theme Toggle (Universal visibility) */}
-        <button 
+        <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground hover:scale-105 active:scale-95"
           aria-label="Toggle theme"
@@ -68,9 +68,9 @@ export function Navbar() {
           {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
-        <a 
-          href="https://lingering-sound-567.linkyhost.com" 
-          target="_blank" 
+        <a
+          href="https://lingering-sound-567.linkyhost.com"
+          target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[10px] font-bold text-primary transition-all hover:bg-primary/20 uppercase tracking-widest"
         >
@@ -79,7 +79,7 @@ export function Navbar() {
         </a>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
         >
@@ -112,9 +112,9 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <a 
-              href="https://lingering-sound-567.linkyhost.com" 
-              target="_blank" 
+            <a
+              href="https://flowcv.com/resume/ebu6gfqrs0sp"
+              target="_blank"
               rel="noopener noreferrer"
               className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary/10 py-3 text-sm font-bold text-primary"
             >

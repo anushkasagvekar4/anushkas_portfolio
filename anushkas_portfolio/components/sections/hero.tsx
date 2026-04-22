@@ -41,9 +41,9 @@ export function Hero() {
             I build production-ready AI systems that solve real human problems. From automation to immersive interfaces, I turn ideas into high-performance reality.
           </p>
           <div className="flex items-center gap-4 mt-2">
-            <a 
-              href="https://lingering-sound-567.linkyhost.com" 
-              target="_blank" 
+            <a
+              href="https://flowcv.com/resume/ebu6gfqrs0sp"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
             >
@@ -54,7 +54,7 @@ export function Hero() {
         </div>
 
         {/* Profile Photo */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
@@ -70,7 +70,7 @@ export function Hero() {
               priority
             />
           </div>
-          
+
           <div className="absolute bottom-4 right-4 flex items-center justify-center h-12 w-12 rounded-full bg-card border border-border shadow-xl">
             <Sparkles size={20} className="text-primary" />
           </div>
@@ -101,7 +101,7 @@ export function Hero() {
       </div>
 
       {/* Attention-Grabbing AI Assistant Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -110,7 +110,7 @@ export function Hero() {
       >
         <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
-        
+
         <div className="relative flex flex-col gap-8">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
@@ -151,7 +151,7 @@ export function Hero() {
           </div>
 
           <div className="relative flex items-center">
-            <input 
+            <input
               type="text"
               placeholder="Ask about my projects, stack, or experience..."
               className="h-14 w-full rounded-2xl border border-border bg-background px-6 pr-16 text-sm outline-none transition-all focus:border-primary/50"
