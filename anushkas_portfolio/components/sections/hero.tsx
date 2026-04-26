@@ -29,7 +29,7 @@ const INITIAL_MESSAGES: Message[] = [
   {
     role: "assistant",
     content:
-      "Hi! I'm Anushka's portfolio assistant. Ask me about her projects, stack, experience, or availability. 👋",
+      "Hi! I'm Anushka. I build production-ready AI systems that solve real-world problems. What brings you here today? I'd love to chat about my work or how I can help your team! 👋",
   },
 ];
 
@@ -224,10 +224,10 @@ export function Hero() {
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <h3 className="text-sm font-bold text-foreground">
-                Anushka's Studio Assistant
+                Chat with Anushka
               </h3>
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
-                Ask about projects, stack, or availability
+                I'm here to answer questions about my work
               </p>
             </div>
             <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
