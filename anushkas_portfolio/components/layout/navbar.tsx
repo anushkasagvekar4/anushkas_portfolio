@@ -69,7 +69,7 @@ export function Navbar() {
         </button>
 
         <a
-          href="https://lingering-sound-567.linkyhost.com"
+          href="https://flowcv.com/resume/ebu6gfqrs0sp"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[10px] font-bold text-primary transition-all hover:bg-primary/20 uppercase tracking-widest"
