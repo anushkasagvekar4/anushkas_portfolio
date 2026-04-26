@@ -147,6 +147,7 @@ export function Hero() {
           <div className="flex items-center gap-4 mt-2">
             <a
               href="https://flowcv.com/resume/ebu6gfqrs0sp"
+
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
@@ -175,49 +176,51 @@ export function Hero() {
               priority
             />
           </div>
+
           <div className="absolute bottom-4 right-4 flex items-center justify-center h-12 w-12 rounded-full bg-card border border-border shadow-xl">
             <Sparkles size={20} className="text-primary" />
           </div>
-        </motion.div>
-      </div>
+        </motion.div >
+      </div >
 
       {/* Metrics Grid */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {metrics.map((metric, idx) => (
-          <motion.div
-            key={metric.label}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * idx }}
-            className="flex flex-col gap-1 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-card"
-          >
-            <span className="text-2xl font-bold text-foreground md:text-3xl">
-              {metric.value}
-            </span>
-            <span className="text-xs font-medium text-foreground">
-              {metric.label}
-            </span>
-            <span className="text-[10px] text-muted-foreground">
-              {metric.sub}
-            </span>
-          </motion.div>
-        ))}
-      </div>
+      < div className="grid grid-cols-2 gap-4 md:grid-cols-4" >
+        {
+          metrics.map((metric, idx) => (
+            <motion.div
+              key={metric.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * idx }}
+              className="flex flex-col gap-1 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-card"
+            >
+              <span className="text-2xl font-bold text-foreground md:text-3xl">
+                {metric.value}
+              </span>
+              <span className="text-xs font-medium text-foreground">
+                {metric.label}
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                {metric.sub}
+              </span>
+            </motion.div>
+          ))
+        }
+      </div >
 
-      {/* AI Chat Assistant */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+      {/* Attention-Grabbing AI Assistant Section */}
+      < motion.div
+        initial={{ opacity: 0, scale: 0.95 }
+        }
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
         className="relative overflow-hidden rounded-3xl border border-border bg-card/30 p-6 md:p-8 backdrop-blur-md"
       >
-        {/* Decorative glows */}
-        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-        <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
 
         <div className="relative flex flex-col gap-8">
-          {/* Header */}
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <h3 className="text-sm font-bold text-foreground">
@@ -229,9 +232,8 @@ export function Hero() {
             </div>
             <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
               <span
-                className={`h-1.5 w-1.5 rounded-full bg-primary ${
-                  isStreaming ? "animate-pulse" : ""
-                }`}
+                className={`h-1.5 w-1.5 rounded-full bg-primary ${isStreaming ? "animate-pulse" : ""
+                  }`}
               />
               <span className="text-[10px] font-bold text-primary uppercase">
                 {isStreaming ? "Typing..." : "Active"}
@@ -244,11 +246,10 @@ export function Hero() {
             {messages.map((msg, idx) => (
               <div key={idx} className="flex gap-3">
                 <div
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                    msg.role === "assistant"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground"
-                  }`}
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${msg.role === "assistant"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
+                    }`}
                 >
                   {msg.role === "assistant" ? "A" : "U"}
                 </div>
@@ -279,7 +280,9 @@ export function Hero() {
                 )}
               </div>
             ))}
-            {error && <p className="text-xs text-destructive pl-11">{error}</p>}
+            {error && (
+              <p className="text-xs text-destructive pl-11">{error}</p>
+            )}
             <div ref={bottomRef} />
           </div>
 
@@ -302,7 +305,6 @@ export function Hero() {
           {/* Input row */}
           <div className="relative flex items-center">
             <input
-              ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -332,7 +334,7 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </motion.div>
-    </section>
+      </motion.div >
+    </section >
   );
 }
