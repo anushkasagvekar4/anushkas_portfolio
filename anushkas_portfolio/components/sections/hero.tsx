@@ -230,14 +230,23 @@ export function Hero() {
                 I'm here to answer questions about my work
               </p>
             </div>
-            <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
-              <span
-                className={`h-1.5 w-1.5 rounded-full bg-primary ${isStreaming ? "animate-pulse" : ""
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setMessages(INITIAL_MESSAGES)}
+                className="text-[10px] font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+              >
+                Clear
+              </button>
+              <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
+                <span
+                  className={`h-1.5 w-1.5 rounded-full bg-primary ${
+                    isStreaming ? "animate-pulse" : ""
                   }`}
-              />
-              <span className="text-[10px] font-bold text-primary uppercase">
-                {isStreaming ? "Typing..." : "Active"}
-              </span>
+                />
+                <span className="text-[10px] font-bold text-primary uppercase">
+                  {isStreaming ? "Typing..." : "Active"}
+                </span>
+              </div>
             </div>
           </div>
 

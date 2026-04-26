@@ -4,6 +4,7 @@ import { ProjectHub } from "@/components/sections/project-hub";
 import { WorkflowViz } from "@/components/sections/workflow-viz";
 import { SkillsEducation } from "@/components/sections/skills-education";
 import { LogicStudio } from "@/components/sections/logic-studio";
+import { Blog } from "@/components/sections/blog";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Experience />
       <ProjectHub />
       <LogicStudio />
+      <Blog />
       <SkillsEducation />
       <WorkflowViz />
       {/* Additional sections will be added here */}
