@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, MessageSquare, Heart, ArrowRight } from "lucide-react";
+import { ExternalLink, Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -28,33 +28,35 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 const BLOG_POSTS = [
   {
     id: 1,
-    title: "Building Production-Ready AI Agents with Gemini 2.5",
-    date: "April 20, 2026",
-    preview: "Scaling AI agents from demo to production requires more than just a good prompt. Here are 5 things I learned while shipping 35+ apps...",
-    likes: "142",
-    comments: "28",
-    link: "https://www.linkedin.com/in/anushkasagvekar",
-    category: "AI Insights",
+    title: "Beyond Code: Real-World Problem Solving",
+    date: "Recent Post",
+    preview: "At first, I thought development was mostly about writing code. But working on real-world projects changed that perspective. True value is created when a business moves from manual processes to a connected web application...",
+    link: "https://www.linkedin.com/posts/anushkasagvekar_softwaredevelopment-fullstack-webdevelopment-activity-7448727543718817794-L6zJ?utm_source=share&utm_medium=member_android&rcm=ACoAAEMn23YBlHfhbFoOBHS498LnWqz2vTAh294",
+    category: "Software Development",
   },
   {
     id: 2,
-    title: "Why Voice-to-Form is the Future of Data Entry",
-    date: "April 12, 2026",
-    preview: "Manual data entry is a bottleneck. By combining audio processing with LLMs, we cut down entry time by 60%. Here's the technical breakdown...",
-    likes: "89",
-    comments: "15",
-    link: "https://www.linkedin.com/in/anushkasagvekar",
-    category: "Case Study",
+    title: "AI Assists, But Doesn't Replace Human Problem Solving",
+    date: "Recent Post",
+    preview: "Ever noticed how your brain feels different when you’re writing code line by line versus when you’re guiding an AI to do it? Both ways matter. One builds depth. The other opens possibilities...",
+    link: "https://www.linkedin.com/posts/anushkasagvekar_softwaredevelopment-artificialintelligence-share-7453718108499755008-dIoh?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEMn23YBlHfhbFoOBHS498LnWqz2vTAh294&utm_campaign=copy_link",
+    category: "AI & Tech",
   },
   {
     id: 3,
-    title: "The Shift from Full Stack to AI-First Engineering",
-    date: "March 28, 2026",
-    preview: "Being a developer in 2026 means thinking about latency, token costs, and context windows as much as state management and CSS...",
-    likes: "210",
-    comments: "42",
-    link: "https://www.linkedin.com/in/anushkasagvekar",
-    category: "Thought Leadership",
+    title: "Grateful for the Opportunity",
+    date: "Recent Post",
+    preview: "I want to take a moment to say thank you for the incredible opportunity. Working on real-world projects and learning alongside great people has been a huge stepping stone in my career...",
+    link: "https://www.linkedin.com/posts/activity-7445675197896007680-Zcen?utm_source=share&utm_medium=member_android&rcm=ACoAAEMn23YBlHfhbFoOBHS498LnWqz2vTAh294",
+    category: "Career Journey",
+  },
+  {
+    id: 4,
+    title: "Building Software for the Real World",
+    date: "Recent Post",
+    preview: "The moment a real company starts running its business on software you built, you realize something important. Coding is not just about writing features. It is about responsibility...",
+    link: "https://www.linkedin.com/posts/anushkasagvekar_the-moment-a-real-company-starts-running-activity-7444578783279595521-_O34?utm_source=social_share_video_v2&utm_medium=android_app&rcm=ACoAAEMn23YBlHfhbFoOBHS498LnWqz2vTAh294&utm_campaign=copy_link",
+    category: "Insights",
   },
 ];
 
@@ -99,18 +101,7 @@ export function Blog() {
               </p>
             </div>
 
-            <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
-              <div className="flex items-center gap-4 text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Heart size={14} />
-                  <span className="text-xs font-medium">{post.likes}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <MessageSquare size={14} />
-                  <span className="text-xs font-medium">{post.comments}</span>
-                </div>
-              </div>
-              
+            <div className="mt-auto pt-4 flex items-center justify-end border-t border-border/50">
               <Link
                 href={post.link}
                 target="_blank"
