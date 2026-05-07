@@ -9,7 +9,9 @@ import { useTheme } from "next-themes";
 
 const links = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
   { label: "Experience", href: "/experience" },
+  { label: "Education", href: "/#education" },
   { label: "Projects", href: "/projects" },
   { label: "Process", href: "/workflows" },
   { label: "Insights", href: "/thinking" },

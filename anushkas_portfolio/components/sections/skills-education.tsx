@@ -5,7 +5,7 @@ import { GraduationCap, Code2, Database, Wrench, Globe, Award, Palette, LayoutTe
 
 export function SkillsEducation() {
   return (
-    <section className="flex flex-col gap-12 py-12">
+    <section id="education" className="flex flex-col gap-12 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Education Section */}
         <div className="flex flex-col gap-8">
@@ -16,24 +16,50 @@ export function SkillsEducation() {
             <p className="text-muted-foreground">My academic background.</p>
           </div>
 
-          <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <GraduationCap size={24} />
+          <div className="flex flex-col gap-4">
+            {/* Mulund College */}
+            <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <GraduationCap size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">BSc Computer Science</h3>
+                    <div className="text-sm text-primary font-medium">Mulund College Of Commerce • Mumbai</div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">BSc Computer Science</h3>
-                  <div className="text-sm text-primary font-medium">Mulund College Of Commerce • Mumbai</div>
+                <div className="flex flex-col items-start md:items-end gap-2">
+                  <div className="text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full w-fit">
+                    Sep 2022 – Apr 2025
+                  </div>
+                  <div className="text-[10px] font-bold text-foreground uppercase tracking-widest bg-primary/5 border border-primary/10 px-2 py-1 rounded-md">
+                    Grade: 8.61
+                  </div>
                 </div>
               </div>
-              <div className="text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full w-fit">
-                2022 – 2025
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                Gained practical experience in full-stack web development through coursework in Web Programming (HTML, CSS, JavaScript, XML, AJAX, jQuery, JSON, PHP, MySQL) and Advanced Web Technologies (MERN stack), C# focusing on both front-end and back-end skills.
+              </p>
+            </div>
+
+            {/* DG Ruparel College */}
+            <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <GraduationCap size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">HSC, Science</h3>
+                    <div className="text-sm text-primary font-medium">DG Ruparel College of Arts, Science and Commerce</div>
+                  </div>
+                </div>
+                <div className="text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full w-fit">
+                  Jul 2020 – Apr 2022
+                </div>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-              Gained practical experience in full-stack web development through coursework in Web Programming (HTML, CSS, JavaScript, XML, AJAX, jQuery, JSON, PHP, MySQL) and Advanced Web Technologies (MERN stack), C# focusing on both front-end and back-end skills.
-            </p>
           </div>
         </div>
 

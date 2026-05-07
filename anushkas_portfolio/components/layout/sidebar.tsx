@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Folder, Lightbulb, Mail, Settings, Sun, Moon } from "lucide-react";
+import { Home, Folder, Lightbulb, Mail, Settings, Sun, Moon, User, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
@@ -10,6 +10,8 @@ import { useTheme } from "next-themes";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
+  { icon: User, label: "About", href: "/#about" },
+  { icon: GraduationCap, label: "Education", href: "/#education" },
   { icon: Folder, label: "Projects", href: "/projects" },
   { icon: Lightbulb, label: "Insights", href: "/thinking" },
   { icon: Mail, label: "Contact", href: "/contact" },

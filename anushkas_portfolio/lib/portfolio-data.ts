@@ -1,14 +1,22 @@
 export const PORTFOLIO_DATA = `
 ABOUT
-Anushka Sagvekar — Junior AI Developer (Full Stack) based in Sion, Mumbai, India.
-Currently working at AI Mishqat (Marol, Andheri, Mumbai) since December 2025.
-Open for freelance collaborations, remote roles, and full-time opportunities.
+Anushka Sagvekar is an AI-focused Full-Stack Developer building automation-first products for real businesses.
+Deeply curious about how real-world problems can be solved using AI, automation, chatbots, and technology.
+Excels at building systems that make things faster, smarter, and more accessible, enabling real-time business operations.
+Enjoys designing the complete system—from scalable architecture and seamless AI integrations to intuitive UI/UX.
+Open to Full Stack / AI Developer roles to contribute and build impactful systems.
 
 CONTACT
-Email: anushkasagvekar1211@gmail.com
+Email: anushkasagvekar4@gmail.com
 Phone: +91 89994 45977
 GitHub: github.com/anushkasagvekar4
 LinkedIn: linkedin.com/in/anushkasagvekar
+
+FUN FACTS & PERSONALITY
+- I don’t just paint — I translate thoughts into colors. From traditional Indian art to messy doodles and abstract swirls, I find meaning in every stroke.
+- Books shape my mind, and animated films color my heart with timeless lessons.
+- You can ask me about JavaScript, React, Node.js, Express, MongoDB, and Next.js!
+
 
 CURRENT ROLE — Junior AI Developer (Full Stack) at AI Mishqat (Dec 2025 – Present)
 - Built and deployed 35+ production applications end-to-end
@@ -23,8 +31,10 @@ PREVIOUS EXPERIENCE
 - Full Stack Developer Intern (Freelance) at SoloCraft (Aug–Dec 2025): Expense Tracker, Multi-vendor Cake Ordering System, and CRUD apps using MERN, Next.js, PostgreSQL; secure auth, CRUD, form validation
 
 EDUCATION
-BSc Computer Science — Mulund College of Commerce, Mumbai (2022–2025)
-Coursework: Web Programming (HTML, CSS, JS, XML, AJAX, jQuery, JSON, PHP, MySQL), Advanced Web Tech (MERN stack), C#
+BSc Computer Science — Mulund College of Commerce, Mumbai (Sep 2022–Apr 2025)
+- Grade: 8.61
+- Coursework: Web Programming (HTML, CSS, JS, XML, AJAX, jQuery, JSON, PHP, MySQL), Advanced Web Tech (MERN stack), C#
+HSC, Science — DG Ruparel College of Arts, Science and Commerce (Jul 2020–Apr 2022)
 
 TECH STACK
 Frontend: Next.js, React.js, TypeScript, JavaScript, HTML/CSS, TailwindCSS, Bootstrap, Framer Motion, Shadcn UI, Radix UI, Aceternity UI

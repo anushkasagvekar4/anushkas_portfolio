@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { ProjectHub } from "@/components/sections/project-hub";
 import { WorkflowViz } from "@/components/sections/workflow-viz";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24">
       <Hero />
+      <About />
       <Experience />
       <ProjectHub />
       <LogicStudio />
