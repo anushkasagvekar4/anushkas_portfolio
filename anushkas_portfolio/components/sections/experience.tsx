@@ -1,98 +1,99 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
 
 const experiences = [
   {
     title: "Junior AI Developer (Full Stack)",
     company: "AI Mishqat",
-    location: "Mumbai, India (Marol, Andheri)",
-    period: "Dec 2025 - Present",
-    description: "Built and deployed 35+ production applications end-to-end, integrated AI features, mentored interns, and collaborated with clients.",
+    location: "Mumbai · Marol, Andheri",
+    period: "Dec 2025 — Present",
     points: [
-      "Developed central AI chatbot to automate workflows, reducing manual work by ~70%",
-      "Built AI features like voice-to-form and invoice extraction, improving efficiency by 60–80%",
-      "Improved system performance by ~40% and reduced load time by 30–50%",
-      "Mentored interns, reviewed code, and led client requirement analysis",
+      "Built and deployed 35+ production applications end-to-end",
+      "Built central AI chatbot automating workflows, cutting manual work by ~70%",
+      "Built voice-to-form pipeline (audio → Gemini → JSON → auto-filled form), improving data entry by ~60%",
+      "Built invoice extraction system (PDF → Gemini Vision → structured data → DB), 60–80% efficiency gain",
+      "Improved system performance by ~40% and reduced load times by 30–50%",
+      "Mentored interns, reviewed code, led client requirement analysis",
     ],
     isLatest: true,
   },
   {
-    title: "Junior AI Developer Full Stack Intern",
+    title: "Junior AI Developer — Intern",
     company: "AI Mishqat",
-    location: "Mumbai, India (Marol, Andheri)",
-    period: "Sep 2025 - Dec 2025",
-    description: "Contributed to real-world features, workflow improvements, and full-stack application development.",
+    location: "Mumbai · Marol, Andheri",
+    period: "Sep 2025 — Dec 2025",
     points: [
-      "Built an exhibition kiosk system for registration, badge printing, and email automation",
-      "Developed landing pages from scratch using Tailwind CSS and UI libraries",
-      "Worked on full-stack apps end-to-end encompassing frontend, backend, DB, and AI integrations",
+      "Built exhibition kiosk system: registration, badge printing, email automation",
+      "Developed landing pages and full-stack apps with frontend, backend, DB, and AI integrations",
     ],
+    isLatest: false,
   },
   {
-    title: "Full Stack Developer Intern (Freelance)",
+    title: "Full Stack Developer — Intern (Freelance)",
     company: "SoloCraft",
     location: "Remote",
-    period: "Aug 2025 - Dec 2025",
-    description: "Built multiple full-stack applications from scratch focusing on scalable architecture and secure APIs.",
+    period: "Aug 2025 — Dec 2025",
     points: [
-      "Built apps including Expense Tracker, Multi-vendor Cake Ordering System, and CRUD apps",
-      "Worked with MERN stack, Next.js, and PostgreSQL",
-      "Implemented secure authentication, CRUD ops, and form validation libraries",
+      "Built Expense Tracker, Multi-vendor Cake Ordering System, and CRUD apps",
+      "Stack: MERN, Next.js, PostgreSQL — with auth, form validation, and REST APIs",
     ],
+    isLatest: false,
   },
 ];
 
 export function Experience() {
   return (
-    <section className="flex flex-col gap-12 py-12">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+    <section id="experience" className="flex flex-col gap-8 py-12 border-t border-border/40">
+      <div className="flex flex-col gap-1">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
           Experience
+        </span>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+          Where I&apos;ve Shipped
         </h2>
-        <p className="text-muted-foreground italic">Building my journey in AI and Software Engineering.</p>
       </div>
 
-      <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-primary before:via-border before:to-transparent md:before:ml-6">
+      {/* Timeline */}
+      <div className="relative flex flex-col gap-0">
+        {/* Vertical line */}
+        <div className="absolute left-[5px] top-2 bottom-2 w-px bg-border md:left-[7px]" />
+
         {experiences.map((exp, idx) => (
           <motion.div
             key={`${exp.company}-${idx}`}
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -8 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            className="relative pl-12 md:pl-16"
+            transition={{ duration: 0.3, delay: idx * 0.08 }}
+            className="relative pl-8 md:pl-10 pb-8 last:pb-0"
           >
-            {/* Timeline Dot */}
-            <div className={`absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full border-4 border-background bg-card shadow-sm md:h-12 md:w-12 ${exp.isLatest ? "text-primary" : "text-muted-foreground"}`}>
-              <Briefcase size={exp.isLatest ? 20 : 18} />
-            </div>
+            {/* Timeline dot */}
+            <div
+              className={`absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-background md:h-3.5 md:w-3.5 ${
+                exp.isLatest ? "bg-primary" : "bg-border"
+              }`}
+            />
 
-            <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:bg-card">
-              <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
-                <div className="flex flex-col">
-                  <h3 className="text-lg font-bold text-foreground">
-                    {exp.title}
-                  </h3>
-                  <div className="text-sm font-medium text-primary">
-                    @{exp.company} • {exp.location}
-                  </div>
+            <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card/40 p-5 hover:bg-card transition-colors duration-200">
+              {/* Header row */}
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                <div>
+                  <p className="text-sm font-bold text-foreground">{exp.title}</p>
+                  <p className="text-xs text-primary font-mono font-medium">
+                    {exp.company} · {exp.location}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full uppercase tracking-wider">
-                  <Calendar size={12} />
+                <span className="text-[10px] font-mono text-muted-foreground bg-muted/50 border border-border px-2.5 py-1 rounded-lg whitespace-nowrap shrink-0 h-fit">
                   {exp.period}
-                </div>
+                </span>
               </div>
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {exp.description}
-              </p>
-
-              <ul className="grid grid-cols-1 gap-2 md:grid-cols-2">
+              {/* Bullet points */}
+              <ul className="flex flex-col gap-1.5">
                 {exp.points.map((point, pIdx) => (
-                  <li key={pIdx} className="flex items-start gap-2 text-xs text-foreground/80">
-                    <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-primary" />
+                  <li key={pIdx} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
+                    <span className="mt-1.5 h-1 w-1 rounded-full bg-primary/60 shrink-0" />
                     {point}
                   </li>
                 ))}

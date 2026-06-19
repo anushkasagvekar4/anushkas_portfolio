@@ -1,97 +1,103 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Palette, BookOpen, Film, Code, MapPin, Briefcase } from "lucide-react";
+import { MapPin, Briefcase, Layers, Palette, BookOpen, Film } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="relative flex flex-col gap-8 py-16 border-t border-border/40">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-4xl">
-          About <span className="text-primary italic">Me</span>
+    <section id="about" className="relative flex flex-col gap-8 py-12 border-t border-border/40">
+      <div className="flex flex-col gap-1">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          About
+        </span>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+          The Engineer
         </h2>
-        <p className="text-sm text-muted-foreground md:text-base max-w-2xl">
-          A glimpse into my background, my current focus, and what I do when I step away from the keyboard.
-        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {/* Left: Professional Bio */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Bio — spans 2 cols */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col gap-6 rounded-3xl border border-border bg-card/30 p-8 backdrop-blur-md"
+          transition={{ duration: 0.35 }}
+          className="md:col-span-2 flex flex-col gap-5 rounded-2xl border border-border bg-card/40 p-6"
         >
-          <div className="flex items-center gap-3 text-primary">
-            <User size={24} />
-            <h3 className="text-xl font-bold text-foreground">My Journey</h3>
+          <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+            <p>
+              I work at the intersection of <span className="text-foreground font-medium">AI integration</span>,{" "}
+              <span className="text-foreground font-medium">operational tooling</span>, and{" "}
+              <span className="text-foreground font-medium">full-stack engineering</span>. My work lives in
+              admin dashboards, internal platforms, and AI pipelines — the systems that make
+              a business run.
+            </p>
+            <p>
+              At <span className="text-foreground font-medium">AI Mishqat</span>, I've shipped 35+ production
+              applications end-to-end — from a central AI chatbot that automated quote generation
+              (cutting ~70% of manual work) to a voice-to-form pipeline that turned spoken input
+              into structured database records with near-zero error.
+            </p>
+            <p>
+              What keeps me interested is the operational challenge, not just the technical one.
+              Understanding a workflow well enough to automate the right layer of it — that's
+              the job.
+            </p>
           </div>
-          
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>
-              I'm an AI-focused Full-Stack Developer building automation-first products for real businesses. Currently at <strong>AI Mishqat</strong>, I've built and shipped over 35 production applications—including central AI chatbots and voice-to-form systems that have cut manual workflows by up to 70%.
-            </p>
-            <p>
-              What excites me most is creating systems that make operations faster, smarter, and more accessible. I don't just write code; I design how everything comes together—from scalable system architecture and seamless AI integrations to intuitive UI/UX. I love taking complex, real-world problems and turning them into powerful, easy-to-use MERN stack applications.
-            </p>
-            <div className="pt-4 flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-sm">
-                <MapPin size={16} className="text-primary" />
-                <span>Mumbai, India</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Briefcase size={16} className="text-primary" />
-                <span>Open to Full Stack / AI Developer roles</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Code size={16} className="text-primary" />
-                <span>Building with MERN Stack & AI</span>
-              </div>
+
+          <div className="flex flex-wrap items-center gap-4 pt-2 border-t border-border/50">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <MapPin size={13} className="text-primary" />
+              Mumbai, India
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <Briefcase size={13} className="text-primary" />
+              Open to Full Stack / AI roles
+            </div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <Layers size={13} className="text-primary" />
+              Operational Systems · AI Integrations
             </div>
           </div>
         </motion.div>
 
-        {/* Right: Hobbies */}
+        {/* Off the Screen — sidebar */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col gap-6 rounded-3xl border border-border bg-card/30 p-8 backdrop-blur-md"
+          transition={{ duration: 0.35, delay: 0.06 }}
+          className="flex flex-col gap-5 rounded-2xl border border-border bg-card/40 p-6"
         >
-          <div className="flex items-center gap-3 text-primary">
-            <Palette size={24} />
-            <h3 className="text-xl font-bold text-foreground">Off the Screen</h3>
-          </div>
-          
-          <div className="space-y-6 text-muted-foreground leading-relaxed">
-            <div className="flex gap-4">
-              <div className="mt-1 shrink-0 rounded-full bg-primary/10 p-2 text-primary">
-                <Palette size={18} />
-              </div>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            Off the Screen
+          </span>
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-3">
+              <Palette size={15} className="text-primary shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-foreground font-bold mb-1">Painting & Art</h4>
-                <p className="text-sm">I don’t just paint — I translate thoughts into colors. From traditional Indian art to messy doodles and abstract swirls, I find meaning in every stroke.</p>
+                <p className="text-xs font-semibold text-foreground mb-0.5">Painting & Art</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Traditional Indian art to abstract doodles. I find meaning in every stroke.
+                </p>
               </div>
             </div>
-            
-            <div className="flex gap-4">
-              <div className="mt-1 shrink-0 rounded-full bg-primary/10 p-2 text-primary">
-                <BookOpen size={18} />
-              </div>
+            <div className="flex gap-3">
+              <BookOpen size={15} className="text-primary shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-foreground font-bold mb-1">Reading</h4>
-                <p className="text-sm">Books shape my mind. I love diving into stories and perspectives that challenge the way I think and view the world.</p>
+                <p className="text-xs font-semibold text-foreground mb-0.5">Reading</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Books that challenge how I think and how I see the world.
+                </p>
               </div>
             </div>
-
-            <div className="flex gap-4">
-              <div className="mt-1 shrink-0 rounded-full bg-primary/10 p-2 text-primary">
-                <Film size={18} />
-              </div>
+            <div className="flex gap-3">
+              <Film size={15} className="text-primary shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-foreground font-bold mb-1">Animated Films</h4>
-                <p className="text-sm">Animated films color my heart with timeless lessons. I appreciate the storytelling, artistry, and emotional depth they bring.</p>
+                <p className="text-xs font-semibold text-foreground mb-0.5">Animated Films</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  The storytelling and artistry of animation never gets old.
+                </p>
               </div>
             </div>
           </div>

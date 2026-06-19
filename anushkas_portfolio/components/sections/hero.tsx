@@ -7,17 +7,17 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 const metrics = [
-  { label: "Apps shipped", value: "35+", sub: "end-to-end" },
-  { label: "Manual work cut", value: "~70%", sub: "AI chatbot" },
-  { label: "Efficiency gain", value: "60-80%", sub: "AI features" },
+  { label: "Systems shipped", value: "35+", sub: "production, end-to-end" },
+  { label: "Manual work cut", value: "~70%", sub: "AI Chatbot System" },
+  { label: "Efficiency gain", value: "60–80%", sub: "Invoice Extraction" },
   { label: "Perf improved", value: "~40%", sub: "system-wide" },
 ];
 
 const SUGGESTED_PROMPTS = [
-  "What's your tech stack?",
-  "Tell me about the AI chatbot",
-  "Are you available to hire?",
-  "What's your biggest project?",
+  "What kind of systems do you build?",
+  "Tell me about the voice-to-form system",
+  "What's your architecture approach?",
+  "Are you open to new roles?",
 ];
 
 type Message = {
@@ -29,7 +29,7 @@ const INITIAL_MESSAGES: Message[] = [
   {
     role: "assistant",
     content:
-      "Hi! I'm Anushka. I build production-ready AI systems that solve real-world problems. What brings you here today? I'd love to chat about my work or how I can help your team! 👋",
+      "Hi — I'm Anushka. I build operational systems: AI automation pipelines, internal tools, dashboards, and workflow engines that remove manual work from real business processes. Ask me anything about my work or how I might fit your team.",
   },
 ];
 
@@ -121,28 +121,28 @@ export function Hero() {
       <div className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
         <div className="flex flex-col gap-4 flex-1">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-primary">
-              <Sparkles size={12} />
-              Full Stack AI Engineer • Mumbai
+            <div className="flex items-center gap-2 text-[10px] font-mono font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              <Sparkles size={11} className="text-primary" />
+              Product & AI Systems Engineer · Mumbai
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-bold text-primary uppercase tracking-widest">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Open for Collaboration
+              <span className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 text-[10px] font-bold text-primary uppercase tracking-widest">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                Open to Roles
               </span>
-              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
-                Freelance • Full-Time • Remote
+              <span className="text-[10px] font-mono text-muted-foreground">
+                Freelance · Full-Time · Remote
               </span>
             </div>
           </div>
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Engineering{" "}
-            <span className="text-primary italic">intelligent</span> experiences
+          <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl leading-[1.1]">
+            Building systems that make operations{" "}
+            <span className="text-primary">invisible.</span>
           </h1>
-          <p className="max-w-xl text-sm text-muted-foreground md:text-base">
-            I build production-ready AI systems that solve real human problems.
-            From automation to immersive interfaces, I turn ideas into
-            high-performance reality.
+          <p className="max-w-lg text-sm text-muted-foreground md:text-base leading-relaxed">
+            I build AI automation pipelines, operational platforms, and internal
+            tools that remove manual work from real business processes.
+            35+ production systems shipped.
           </p>
           <div className="flex items-center gap-4 mt-2">
             <a

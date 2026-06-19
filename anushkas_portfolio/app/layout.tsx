@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AnushkaOS.dev | AI Full Stack Developer",
-  description: "Interactive AI-powered developer portfolio showcasing 35+ real-world applications and AI workflows.",
+  title: "Anushka Sagvekar — Product & AI Systems Engineer",
+  description: "Product & AI Systems Engineer. Built 35+ production systems across AI workflow automation, operational tooling, and scalable full-stack platforms. Based in Mumbai.",
 };
 
 export default function RootLayout({

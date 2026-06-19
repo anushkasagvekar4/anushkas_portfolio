@@ -11,10 +11,10 @@ const CATEGORIES = ["All", "AI", "Automation", "Full Stack", "CRM"] as const;
 type Filter = (typeof CATEGORIES)[number];
 
 const categoryColors: Record<string, string> = {
-  AI: "text-[#2dd4bf] bg-[#2dd4bf]/10 border-[#2dd4bf]/20",
-  Automation: "text-[#a78bfa] bg-[#a78bfa]/10 border-[#a78bfa]/20",
-  "Full Stack": "text-[#fb923c] bg-[#fb923c]/10 border-[#fb923c]/20",
-  CRM: "text-[#60a5fa] bg-[#60a5fa]/10 border-[#60a5fa]/20",
+  AI: "text-[#2dd4bf] border-[#2dd4bf]/20",
+  Automation: "text-[#a78bfa] border-[#a78bfa]/20",
+  "Full Stack": "text-[#fb923c] border-[#fb923c]/20",
+  CRM: "text-[#60a5fa] border-[#60a5fa]/20",
 };
 
 export function ProjectHub() {
@@ -25,27 +25,31 @@ export function ProjectHub() {
   );
 
   return (
-    <section className="flex flex-col gap-10">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-          Featured Projects
-        </h2>
-        <p className="text-muted-foreground italic">
-          Selected works showcasing the intersection of AI and human-centered design.
-        </p>
+    <section id="systems" className="flex flex-col gap-8 border-t border-border/40 py-12">
+      <div className="flex flex-col gap-1.5">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          Systems
+        </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">
+            Case Studies
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+            Architecting operational systems that solve high-stakes business problems.
+          </p>
+        </div>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {CATEGORIES.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveFilter(cat)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-xs font-medium transition-all duration-200",
+              "rounded-lg border px-3.5 py-1.5 text-xs font-mono transition-all duration-150",
               activeFilter === cat
-                ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
+                ? "border-foreground bg-foreground text-background"
+                : "border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground"
             )}
           >
             {cat}
@@ -53,70 +57,67 @@ export function ProjectHub() {
         ))}
       </div>
 
-      {/* Project Grid */}
-      <motion.div layout className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence>
+      <motion.div layout className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
             <motion.div
               key={project.id}
               layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="group relative flex flex-col gap-4 overflow-hidden rounded-3xl border border-border bg-card/50 p-6 transition-all duration-300 hover:border-primary/20 hover:bg-card hover:shadow-[0_0_30px_rgba(167,139,250,0.08)]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="group flex flex-col gap-5 rounded-2xl border border-border bg-card/40 p-6 transition-all duration-200 hover:border-foreground/10 hover:bg-muted/10"
             >
-              {/* Category Badge */}
               <div className="flex items-center justify-between">
-                <span
-                  className={cn(
-                    "rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest",
-                    categoryColors[project.category] ?? "text-muted-foreground bg-muted/50 border-border"
-                  )}
-                >
+                <span className={cn(
+                  "text-[10px] font-mono font-bold uppercase tracking-widest",
+                  categoryColors[project.category] || "text-muted-foreground"
+                )}>
                   {project.category}
                 </span>
-                <span className="text-xs font-mono text-muted-foreground">
+                <span className="text-[10px] font-mono text-muted-foreground opacity-50">
                   @{project.company}
                 </span>
               </div>
 
-              {/* Title & Impact */}
-              <div className="flex flex-col gap-2">
-                <h3 className="text-base font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+              <div className="flex flex-col gap-1.5">
+                <h3 className="text-sm font-bold text-foreground">
                   {project.title}
                 </h3>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                   {project.problem}
-                </div>
+                </p>
               </div>
 
-              {/* Impact Metric */}
-              <div className="flex items-center gap-2 rounded-2xl bg-muted/50 px-4 py-2.5">
-                <Zap size={14} className="text-primary shrink-0" />
-                <span className="text-sm font-bold text-foreground">
+              <div className="flex items-center gap-2">
+                <Zap size={11} className="text-primary fill-primary/10" />
+                <span className="text-[11px] font-mono font-bold text-foreground">
                   {project.impactMetric}
                 </span>
               </div>
 
-              {/* Stack Pills */}
-              <div className="flex flex-wrap gap-1.5">
-                {project.stack.map((tech) => (
+              <div className="flex flex-wrap gap-1 mt-auto">
+                {project.stack.slice(0, 3).map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-lg bg-muted/60 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-muted"
+                    className="rounded bg-muted/30 px-1.5 py-0.5 text-[9px] font-mono text-muted-foreground uppercase"
                   >
                     {tech}
                   </span>
                 ))}
+                {project.stack.length > 3 && (
+                  <span className="text-[9px] font-mono text-muted-foreground opacity-30 px-1.5 py-0.5">
+                    +{project.stack.length - 3}
+                  </span>
+                )}
               </div>
 
-              {/* Link */}
               <Link
                 href={`/projects/${project.slug}`}
-                className="mt-auto flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-primary"
+                className="flex items-center gap-1 text-[11px] font-bold text-muted-foreground hover:text-foreground transition-colors group/link"
               >
-                View case study <ArrowUpRight size={12} />
+                Deep Dive <ArrowUpRight size={12} className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
               </Link>
             </motion.div>
           ))}

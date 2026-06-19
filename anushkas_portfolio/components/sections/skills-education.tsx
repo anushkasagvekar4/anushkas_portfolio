@@ -1,132 +1,153 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Code2, Database, Wrench, Globe, Award, Palette, LayoutTemplate, Layers } from "lucide-react";
+import { GraduationCap } from "lucide-react";
+
+const skillGroups = [
+  {
+    layer: "UI & Frontend",
+    color: "text-[#34d399]",
+    skills: ["Next.js", "React", "TypeScript", "JavaScript", "TailwindCSS", "Framer Motion", "Shadcn UI", "HTML/CSS"],
+  },
+  {
+    layer: "API & Backend",
+    color: "text-[#60a5fa]",
+    skills: ["Node.js", "Express.js", "REST API design", "RBAC middleware", "Auth systems"],
+  },
+  {
+    layer: "Data & Persistence",
+    color: "text-[#fb923c]",
+    skills: ["PostgreSQL", "MongoDB", "MySQL", "Schema design", "Aggregation pipelines"],
+  },
+  {
+    layer: "AI & Automation",
+    color: "text-[#a78bfa]",
+    skills: ["Gemini API", "Gemini Vision", "Multi-modal pipelines", "Prompt engineering", "Workflow automation"],
+  },
+  {
+    layer: "Systems & Infra",
+    color: "text-[#f472b6]",
+    skills: ["Vercel", "Render", "Google Cloud", "GitHub", "Postman"],
+  },
+];
+
+const education = [
+  {
+    degree: "BSc Computer Science",
+    institution: "Mulund College of Commerce",
+    location: "Mumbai",
+    period: "Sep 2022 – Apr 2025",
+    grade: "8.61",
+    coursework: "Web Programming · MERN Stack · Advanced Web Tech · C#",
+  },
+  {
+    degree: "HSC, Science",
+    institution: "DG Ruparel College of Arts, Science and Commerce",
+    location: "Mumbai",
+    period: "Jul 2020 – Apr 2022",
+    grade: null,
+    coursework: null,
+  },
+];
 
 export function SkillsEducation() {
   return (
-    <section id="education" className="flex flex-col gap-12 py-12">
+    <section id="education" className="flex flex-col gap-12 py-12 border-t border-border/40">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Education Section */}
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Education <span className="text-muted-foreground font-mono text-sm ml-2">/ acad.log</span>
+
+        {/* Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.35 }}
+          className="flex flex-col gap-6"
+        >
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              Education
+            </span>
+            <h2 className="text-xl font-bold tracking-tight text-foreground">
+              Academic Background
             </h2>
-            <p className="text-muted-foreground">My academic background.</p>
           </div>
 
-          <div className="flex flex-col gap-4">
-            {/* Mulund College */}
-            <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                    <GraduationCap size={24} />
+          <div className="flex flex-col gap-3">
+            {education.map((edu) => (
+              <div
+                key={edu.degree}
+                className="flex flex-col gap-3 rounded-2xl border border-border bg-card/40 p-5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <GraduationCap size={18} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-foreground">{edu.degree}</p>
+                      <p className="text-xs text-primary font-medium">{edu.institution}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">BSc Computer Science</h3>
-                    <div className="text-sm text-primary font-medium">Mulund College Of Commerce • Mumbai</div>
+                  <div className="flex flex-col items-end gap-1 shrink-0">
+                    <span className="text-[10px] font-mono text-muted-foreground">{edu.period}</span>
+                    {edu.grade && (
+                      <span className="text-[10px] font-mono font-bold text-primary bg-primary/5 border border-primary/10 px-2 py-0.5 rounded">
+                        GPA {edu.grade}
+                      </span>
+                    )}
                   </div>
                 </div>
-                <div className="flex flex-col items-start md:items-end gap-2">
-                  <div className="text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full w-fit">
-                    Sep 2022 – Apr 2025
-                  </div>
-                  <div className="text-[10px] font-bold text-foreground uppercase tracking-widest bg-primary/5 border border-primary/10 px-2 py-1 rounded-md">
-                    Grade: 8.61
-                  </div>
-                </div>
+                {edu.coursework && (
+                  <p className="text-xs text-muted-foreground font-mono leading-relaxed">
+                    {edu.coursework}
+                  </p>
+                )}
               </div>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                Gained practical experience in full-stack web development through coursework in Web Programming (HTML, CSS, JavaScript, XML, AJAX, jQuery, JSON, PHP, MySQL) and Advanced Web Technologies (MERN stack), C# focusing on both front-end and back-end skills.
-              </p>
-            </div>
-
-            {/* DG Ruparel College */}
-            <div className="flex flex-col gap-4 rounded-3xl border border-border bg-card/50 p-6 md:p-8 backdrop-blur-sm">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                    <GraduationCap size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">HSC, Science</h3>
-                    <div className="text-sm text-primary font-medium">DG Ruparel College of Arts, Science and Commerce</div>
-                  </div>
-                </div>
-                <div className="text-xs font-mono text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-full w-fit">
-                  Jul 2020 – Apr 2022
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Skills Section */}
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Skills <span className="text-muted-foreground font-mono text-sm ml-2">/ tech.stack</span>
+        {/* Tech Stack */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.35, delay: 0.06 }}
+          className="flex flex-col gap-6"
+        >
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground">
+              Tech Stack
+            </span>
+            <h2 className="text-xl font-bold tracking-tight text-foreground">
+              By Layer
             </h2>
-            <p className="text-muted-foreground">Technologies and tools I work with.</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4">
-            {/* Frontend & UI */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card/50 p-5">
-              <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-                <LayoutTemplate size={16} className="text-[#34d399]" />
-                Frontend & UI
+          <div className="flex flex-col gap-3">
+            {skillGroups.map((group) => (
+              <div
+                key={group.layer}
+                className="flex flex-col gap-2.5 rounded-2xl border border-border bg-card/40 p-4"
+              >
+                <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.15em] ${group.color}`}>
+                  {group.layer}
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.skills.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-md bg-muted/60 border border-border/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {["Next.js", "React.js", "TypeScript", "JavaScript", "HTML/CSS", "TailwindCSS", "Bootstrap", "Framer Motion", "Shadcn UI", "Radix UI", "Aceternity UI"].map(s => (
-                  <span key={s} className="bg-muted/80 px-2.5 py-1 rounded-lg text-xs font-mono text-muted-foreground">{s}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Backend & DB */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card/50 p-5">
-              <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-                <Database size={16} className="text-[#60a5fa]" />
-                Backend & Database
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {["Node.js", "Express.js", "MongoDB", "PostgreSQL", "MySQL", "REST APIs"].map(s => (
-                  <span key={s} className="bg-muted/80 px-2.5 py-1 rounded-lg text-xs font-mono text-muted-foreground">{s}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Tools & AI */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card/50 p-5">
-              <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-                <Wrench size={16} className="text-[#a78bfa]" />
-                Tools, AI & DevOps
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {["Gemini API", "AI Integrations", "Workflow Automation", "Vercel", "Render", "Google Cloud", "VS Code", "Windsurf", "GitHub", "Postman"].map(s => (
-                  <span key={s} className="bg-muted/80 px-2.5 py-1 rounded-lg text-xs font-mono text-muted-foreground">{s}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Certificates & Soft Skills */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card/50 p-5">
-              <div className="flex items-center gap-2 text-sm font-bold text-foreground">
-                <Award size={16} className="text-[#fbbf24]" />
-                Certificates & Other
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {["Tableau", "DevOps", "Graphic Designing", "Animation & Graphics", "Client Req Analysis", "Communication"].map(s => (
-                  <span key={s} className="bg-muted/80 px-2.5 py-1 rounded-lg text-xs font-mono text-muted-foreground">{s}</span>
-                ))}
-              </div>
-            </div>
-            
+            ))}
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

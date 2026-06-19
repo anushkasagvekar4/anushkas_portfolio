@@ -30,28 +30,28 @@
 }
 
 .dark {
-  /* Human-Friendly Dark Mode Palette */
-  --background: #0a0a0c;
-  --foreground: #f8fafc;
-  --card: #121216;
-  --card-foreground: #f8fafc;
-  --popover: #121216;
-  --popover-foreground: #f8fafc;
-  --primary: #818cf8; /* Softer Indigo */
-  --primary-foreground: #0c0c10;
-  --secondary: #1a1a1e;
-  --secondary-foreground: #f8fafc;
-  --muted: #1a1a1e;
-  --muted-foreground: #94a3b8;
-  --accent: #1e1e24;
-  --accent-foreground: #f8fafc;
-  --destructive: #cc4444;
-  --destructive-foreground: #f0f0f8;
-  --border: #22222a;
-  --input: #22222a;
-  --ring: #818cf8;
+  /* Linear/Vercel inspired palette */
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #09090b;
+  --card-foreground: #fafafa;
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+  --primary: #ffffff; 
+  --primary-foreground: #09090b;
+  --secondary: #18181b;
+  --secondary-foreground: #fafafa;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --accent: #18181b;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #18181b; 
+  --input: #18181b;
+  --ring: #27272a;
 
-  /* Accent Colors */
+  /* Accent Colors - Restrained */
   --ai-badge: #14b8a6;
   --fullstack-badge: #f97316;
   --automation-badge: #818cf8;
