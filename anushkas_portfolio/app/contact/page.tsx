@@ -43,25 +43,54 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+const CONTACT_EMAIL = "anushkasagvekar1211@gmail.com";
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function ContactPage() {
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "submitting") return;
+
     setStatus("submitting");
-    // Simulate network request
-    setTimeout(() => {
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Could not send your message.");
+      }
+
       setStatus("success");
-      // Reset form after a few seconds
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err) {
+      setErrorMsg(
+        err instanceof Error ? err.message : "Could not send your message."
+      );
+      setStatus("error");
+    }
   };
 
   return (
     <section className="flex flex-col gap-12 py-12 min-h-[70vh] justify-center items-center md:items-start w-full max-w-5xl mx-auto">
       <div className="flex flex-col gap-2 relative z-10 text-center md:text-left">
         <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl lg:text-7xl">
-          Let's build <span className="text-primary italic">something</span>.
+          Let&apos;s build <span className="text-primary italic">something</span>.
         </h1>
         <p className="text-lg text-muted-foreground mt-4 max-w-xl">
           Interested in AI automation, full-stack systems, or collaborating on a complex problem? Drop a message or reach out directly.
@@ -75,26 +104,43 @@ export default function ContactPage() {
           
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Name</label>
-            <input required type="text" className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="John Doe" />
+            <input required type="text" value={name} onChange={(e) => setName(e.target.value)} className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="John Doe" />
           </div>
           
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Email</label>
-            <input required type="email" className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="john@example.com" />
+            <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 w-full rounded-xl border border-border bg-background px-4 outline-none focus:border-primary/50 text-sm text-foreground transition-colors" placeholder="john@example.com" />
           </div>
           
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Message</label>
-            <textarea required rows={4} className="w-full rounded-xl border border-border bg-background p-4 outline-none focus:border-primary/50 text-sm text-foreground resize-none transition-colors" placeholder="How can we help you?" />
+            <textarea required rows={4} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full rounded-xl border border-border bg-background p-4 outline-none focus:border-primary/50 text-sm text-foreground resize-none transition-colors" placeholder="How can we help you?" />
           </div>
           
-          <button 
-            type="submit" 
-            disabled={status !== "idle"} 
+          <button
+            type="submit"
+            disabled={status === "submitting"}
             className="mt-2 flex h-12 w-full items-center justify-center rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 disabled:opacity-50 transition-all active:scale-[0.98]"
           >
-            {status === "idle" ? "Send Message" : status === "submitting" ? "Sending..." : "Message Sent ✓"}
+            {status === "submitting"
+              ? "Sending..."
+              : status === "success"
+              ? "Message Sent ✓"
+              : "Send Message"}
           </button>
+
+          {status === "error" && (
+            <p className="text-xs text-destructive">
+              {errorMsg}{" "}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-bold underline hover:text-foreground"
+              >
+                Email me directly
+              </a>
+              .
+            </p>
+          )}
         </form>
 
         <div className="flex flex-col gap-6">

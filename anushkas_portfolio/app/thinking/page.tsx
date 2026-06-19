@@ -1,4 +1,4 @@
-import { Lightbulb, Code2, Layers, Cpu } from "lucide-react";
+import { Code2, Layers, Cpu } from "lucide-react";
 
 const principles = [
   {
@@ -26,7 +26,7 @@ export default function ThinkingPage() {
           How I Think <span className="font-mono text-sm text-muted-foreground ml-2">/ systems.md</span>
         </h1>
         <p className="text-lg text-muted-foreground mt-4 max-w-2xl">
-          The mental models and principles that drive my engineering decisions. A look at the "why" behind the code.
+          The mental models and principles that drive my engineering decisions. A look at the &quot;why&quot; behind the code.
         </p>
       </div>
 

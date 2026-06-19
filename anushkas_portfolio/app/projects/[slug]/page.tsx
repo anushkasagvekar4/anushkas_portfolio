@@ -171,7 +171,7 @@ export default async function ProjectPage({
       {/* Demo / Diagram Space */}
       <div className="rounded-3xl border border-border bg-card/30 p-8 flex flex-col items-center justify-center min-h-[280px]">
         <span className="text-xs font-mono text-muted-foreground opacity-40 uppercase tracking-[0.2em]">
-          // Interactive Demo · Diagram · Coming Soon
+          {"// Interactive Demo · Diagram · Coming Soon"}
         </span>
       </div>
     </div>

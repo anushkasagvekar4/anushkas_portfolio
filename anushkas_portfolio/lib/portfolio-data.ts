@@ -7,7 +7,7 @@ Enjoys designing the complete system—from scalable architecture and seamless A
 Open to Full Stack / AI Developer roles to contribute and build impactful systems.
 
 CONTACT
-Email: anushkasagvekar4@gmail.com
+Email: anushkasagvekar1211@gmail.com
 Phone: +91 89994 45977
 GitHub: github.com/anushkasagvekar4
 LinkedIn: linkedin.com/in/anushkasagvekar

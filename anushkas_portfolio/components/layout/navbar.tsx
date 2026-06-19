@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FileText, Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -21,15 +21,8 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   return (
     <header className="fixed right-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-md md:left-16 md:w-auto">
@@ -64,11 +57,12 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         {/* Theme Toggle (Universal visibility) */}
         <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
           className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground hover:scale-105 active:scale-95"
           aria-label="Toggle theme"
         >
-          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          <Sun size={20} className="hidden dark:block" />
+          <Moon size={20} className="block dark:hidden" />
         </button>
 
         <a

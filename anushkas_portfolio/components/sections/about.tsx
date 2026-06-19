@@ -33,14 +33,14 @@ export function About() {
               a business run.
             </p>
             <p>
-              At <span className="text-foreground font-medium">AI Mishqat</span>, I've shipped 35+ production
+              At <span className="text-foreground font-medium">AI Mishqat</span>, I&apos;ve shipped 35+ production
               applications end-to-end — from a central AI chatbot that automated quote generation
               (cutting ~70% of manual work) to a voice-to-form pipeline that turned spoken input
               into structured database records with near-zero error.
             </p>
             <p>
               What keeps me interested is the operational challenge, not just the technical one.
-              Understanding a workflow well enough to automate the right layer of it — that's
+              Understanding a workflow well enough to automate the right layer of it — that&apos;s
               the job.
             </p>
           </div>

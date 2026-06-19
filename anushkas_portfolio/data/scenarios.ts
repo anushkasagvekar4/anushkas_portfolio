@@ -1,3 +1,5 @@
+import type { Node, Edge } from "@xyflow/react";
+
 export interface Scenario {
   id: string;
   title: string;
@@ -8,8 +10,8 @@ export interface Scenario {
     description: string;
   };
   terminalLogs: string[];
-  nodes: any[];
-  edges: any[];
+  nodes: Node[];
+  edges: Edge[];
 }
 
 export const scenarios: Scenario[] = [

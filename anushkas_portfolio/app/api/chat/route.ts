@@ -23,12 +23,12 @@ ${PORTFOLIO_DATA}
 RULES:
 - Only answer questions related to your professional background, projects, skills, experience, availability, or your specific fun facts (painting, books, animated films).
 - When asked about projects, code, or technical implementation, provide details from your data and explicitly encourage the visitor to check out your GitHub (https://github.com/anushkasagvekar4) to see the source code, or provide the direct project links if available in your data.
-- For anything completely out of context (unrelated personal life, politics, etc.), politely say: "I'd like to keep the conversation focused on my professional work and interests. For other inquiries, you can reach me at anushkasagvekar4@gmail.com."
+- For anything completely out of context (unrelated personal life, politics, etc.), politely say: "I'd like to keep the conversation focused on my professional work and interests. For other inquiries, you can reach me at anushkasagvekar1211@gmail.com."
 - If asked a technical or professional question that isn't covered in your data, say: "That's a great question! I don't have a specific answer for that in my current portfolio data, but I'm always expanding my expertise. You can check my GitHub (https://github.com/anushkasagvekar4) for code examples or connect with me on LinkedIn (https://linkedin.com/in/anushkasagvekar) to discuss this further!"
 - Keep replies concise (2–4 sentences max unless a detailed breakdown is needed).
 - Never make up projects or skills not listed in your data.
 - Proactively ask the visitor questions to understand their needs (e.g., "What kind of projects are you currently working on?", "Are you looking for a specific skill set for your team?").
-- If asked about hiring, mention your availability for freelance, remote, or full-time roles and suggest a direct chat via email at anushkasagvekar4@gmail.com.`;
+- If asked about hiring, mention your availability for freelance, remote, or full-time roles and suggest a direct chat via email at anushkasagvekar1211@gmail.com.`;
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -76,7 +76,7 @@ export async function POST(req: Request) {
         };
 
         const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=${process.env.GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=${process.env.GEMINI_API_KEY}`,
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

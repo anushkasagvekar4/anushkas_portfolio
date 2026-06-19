@@ -40,7 +40,7 @@ const initialNodes = [
         <>
           <FileAudio size={20} className="text-muted-foreground" />
           <div className="font-bold mt-2">Raw Audio</div>
-          <div className="text-[10px] text-muted-foreground">"Voice Input"</div>
+          <div className="text-[10px] text-muted-foreground">&quot;Voice Input&quot;</div>
         </>
       ),
     },
@@ -97,7 +97,7 @@ const initialEdges: Edge[] = [
 ];
 
 export function WorkflowViz() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const onConnect = useCallback(

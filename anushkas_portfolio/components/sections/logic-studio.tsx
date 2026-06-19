@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { 
-  ReactFlow, 
-  Background, 
-  BackgroundVariant, 
-  useNodesState, 
-  useEdgesState, 
+  ReactFlow,
+  Background,
+  BackgroundVariant,
+  useNodesState,
+  useEdgesState,
   Node,
   Edge,
-  ReactFlowInstance
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,38 +27,39 @@ const nodeStyle = {
   minWidth: "120px",
 };
 
+const buildNodes = (scenario: (typeof scenarios)[number]): Node[] =>
+  scenario.nodes.map((n) => ({ ...n, style: nodeStyle, opacity: 0 }));
+
 export function LogicStudio() {
   const [selectedId, setSelectedId] = useState(scenarios[0].id);
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
-  const [progress, setProgress] = useState(0);
-  
+
   const currentScenario = scenarios.find(s => s.id === selectedId) || scenarios[0];
 
-  const [nodes, setNodes] = useNodesState<Node>([]);
+  const [nodes, setNodes] = useNodesState<Node>(buildNodes(scenarios[0]));
   const [edges, setEdges] = useEdgesState<Edge>([]);
-  const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
 
-  useEffect(() => {
-    setNodes(currentScenario.nodes.map(n => ({...n, style: nodeStyle, opacity: 0})));
+  const selectScenario = (id: string) => {
+    if (id === selectedId) return;
+    const scenario = scenarios.find((s) => s.id === id) || scenarios[0];
+    setSelectedId(id);
+    setNodes(buildNodes(scenario));
     setEdges([]);
     setLogs([]);
     setIsRunning(false);
-    setProgress(0);
-  }, [selectedId, currentScenario, setNodes, setEdges]);
+  };
 
   const runSimulation = async () => {
     if (isRunning) return;
     setIsRunning(true);
     setLogs([]);
-    setProgress(0);
-    
+
     const totalSteps = currentScenario.terminalLogs.length;
-    
+
     for (let i = 0; i < totalSteps; i++) {
       setLogs(prev => [...prev, currentScenario.terminalLogs[i]]);
-      setProgress(((i + 1) / totalSteps) * 100);
-      
+
       const nodeIndex = Math.floor((i / totalSteps) * currentScenario.nodes.length);
       setNodes(nds => nds.map((n, idx) => idx <= nodeIndex ? { ...n, opacity: 1 } : n));
       
@@ -102,7 +102,7 @@ export function LogicStudio() {
             {scenarios.map((s) => (
               <button
                 key={s.id}
-                onClick={() => setSelectedId(s.id)}
+                onClick={() => selectScenario(s.id)}
                 className={cn(
                   "flex flex-col gap-1 p-3 rounded-xl transition-all text-left",
                   selectedId === s.id 
@@ -199,7 +199,6 @@ export function LogicStudio() {
             <ReactFlow
               nodes={nodes}
               edges={edges}
-              onInit={setRfInstance}
               fitView
               className="bg-transparent"
               nodesDraggable={false}

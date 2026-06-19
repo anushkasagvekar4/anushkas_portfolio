@@ -6,13 +6,6 @@ import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 
-const metrics = [
-  { label: "Systems shipped", value: "35+", sub: "production, end-to-end" },
-  { label: "Manual work cut", value: "~70%", sub: "AI Chatbot System" },
-  { label: "Efficiency gain", value: "60–80%", sub: "Invoice Extraction" },
-  { label: "Perf improved", value: "~40%", sub: "system-wide" },
-];
-
 const SUGGESTED_PROMPTS = [
   "What kind of systems do you build?",
   "Tell me about the voice-to-form system",
@@ -135,7 +128,7 @@ export function Hero() {
               </span>
             </div>
           </div>
-          <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl leading-[1.1]">
+          <h1 className="font-script max-w-2xl text-5xl text-foreground md:text-6xl lg:text-7xl leading-[1.15]">
             Building systems that make operations{" "}
             <span className="text-primary">invisible.</span>
           </h1>
@@ -183,31 +176,6 @@ export function Hero() {
         </motion.div >
       </div >
 
-      {/* Metrics Grid */}
-      < div className="grid grid-cols-2 gap-4 md:grid-cols-4" >
-        {
-          metrics.map((metric, idx) => (
-            <motion.div
-              key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * idx }}
-              className="flex flex-col gap-1 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/20 hover:bg-card"
-            >
-              <span className="text-2xl font-bold text-foreground md:text-3xl">
-                {metric.value}
-              </span>
-              <span className="text-xs font-medium text-foreground">
-                {metric.label}
-              </span>
-              <span className="text-[10px] text-muted-foreground">
-                {metric.sub}
-              </span>
-            </motion.div>
-          ))
-        }
-      </div >
-
       {/* Attention-Grabbing AI Assistant Section */}
       < motion.div
         initial={{ opacity: 0, scale: 0.95 }
@@ -227,7 +195,7 @@ export function Hero() {
                 Chat with Anushka
               </h3>
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
-                I'm here to answer questions about my work
+                I&apos;m here to answer questions about my work
               </p>
             </div>
             <div className="flex items-center gap-4">

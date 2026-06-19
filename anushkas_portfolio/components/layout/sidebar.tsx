@@ -4,14 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Layers, Lightbulb, Briefcase, GraduationCap, User, Mail, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
-  { icon: Layers, label: "Systems", href: "/#systems" },
-  { icon: Lightbulb, label: "Insights", href: "/#logic-studio" },
-  { icon: Briefcase, label: "Experience", href: "/#experience" },
+  { icon: Layers, label: "Systems", href: "/projects" },
+  { icon: Lightbulb, label: "Insights", href: "/thinking" },
+  { icon: Briefcase, label: "Experience", href: "/experience" },
   { icon: GraduationCap, label: "Stack", href: "/#education" },
   { icon: User, label: "About", href: "/#about" },
   { icon: Mail, label: "Contact", href: "/contact" },
@@ -19,14 +18,7 @@ const navItems = [
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+  const { setTheme } = useTheme();
 
   return (
     <aside className="fixed left-0 top-0 hidden h-screen w-14 flex-col items-center border-r border-border bg-background py-6 md:flex">
@@ -61,12 +53,13 @@ export function Sidebar() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <button 
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        <button
+          onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
           className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
           aria-label="Toggle theme"
         >
-          {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          <Sun size={18} className="hidden dark:block" />
+          <Moon size={18} className="block dark:hidden" />
         </button>
       </div>
     </aside>
