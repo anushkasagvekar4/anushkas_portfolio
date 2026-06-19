@@ -1,9 +1,18 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Sidebar } from "./sidebar";
 import { Navbar } from "./navbar";
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  // Demo routes render on a clean full-bleed canvas (no sidebar/navbar)
+  // so each aesthetic direction can be judged on its own.
+  if (pathname?.startsWith("/demos")) {
+    return <>{children}</>;
+  }
+
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       <Sidebar />
