@@ -1,60 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  /* Human-Friendly Light Mode Palette */
-  --background: #fdfdfd;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #6366f1; /* Indigo */
-  --primary-foreground: #ffffff;
-  --secondary: #f8fafc;
-  --secondary-foreground: #1e293b;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #1e293b;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #6366f1;
-  --radius: 1rem; /* Slightly softer corners */
+  /* Editorial — warm paper, soft ink, vermilion (no pure black/white) */
+  --background: #f4f1ea; /* warm paper */
+  --foreground: oklch(20.8% 0.042 265.755); /* soft warm off-black ink */
+  --card: #fbfaf6;
+  --card-foreground: oklch(20.8% 0.042 265.755);
+  --popover: #fbfaf6;
+  --popover-foreground: oklch(20.8% 0.042 265.755);
+  --primary: oklch(26.6% 0.079 36.259); /* deep warm brown — brand accent */
+  --primary-foreground: #fbfaf6;
+  --secondary: #ece8de;
+  --secondary-foreground: oklch(20.8% 0.042 265.755);
+  --muted: #ece8de;
+  --muted-foreground: #797368; /* warm grey */
+  --accent: oklch(26.6% 0.079 36.259);
+  --accent-foreground: #fbfaf6;
+  --destructive: #c0392b;
+  --destructive-foreground: #fbfaf6;
+  --border: #e1dacd; /* soft warm hairline */
+  --input: #ded7ca;
+  --ring: oklch(26.6% 0.079 36.259);
+  --radius: 0.85rem; /* soft, rounded corners */
 
-  /* Accent Colors */
-  --ai-badge: #0d9488;
-  --fullstack-badge: #ea580c;
-  --automation-badge: #8b5cf6;
+  /* Domain accent tags (kept, harmonized to brand) */
+  --ai-badge: oklch(26.6% 0.079 36.259);
+  --fullstack-badge: oklch(20.8% 0.042 265.755);
+  --automation-badge: #797368;
 }
 
 .dark {
-  /* Linear/Vercel inspired palette */
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #09090b;
-  --card-foreground: #fafafa;
-  --popover: #09090b;
-  --popover-foreground: #fafafa;
-  --primary: #ffffff; 
-  --primary-foreground: #09090b;
-  --secondary: #18181b;
-  --secondary-foreground: #fafafa;
-  --muted: #18181b;
-  --muted-foreground: #a1a1aa;
-  --accent: #18181b;
-  --accent-foreground: #fafafa;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #fafafa;
-  --border: #18181b; 
-  --input: #18181b;
-  --ring: #27272a;
+  /* Editorial inverted — warm charcoal, soft light ink, vermilion */
+  --background: #1b1916;
+  --foreground: #f1ede4;
+  --card: #232019;
+  --card-foreground: #f1ede4;
+  --popover: #232019;
+  --popover-foreground: #f1ede4;
+  --primary: oklch(72% 0.12 36.259); /* lightened same-hue brown for dark bg */
+  --primary-foreground: #1b1916;
+  --secondary: #2a2620;
+  --secondary-foreground: #f1ede4;
+  --muted: #2a2620;
+  --muted-foreground: #a8a195;
+  --accent: oklch(72% 0.12 36.259);
+  --accent-foreground: #1b1916;
+  --destructive: #e25c4a;
+  --destructive-foreground: #1b1916;
+  --border: #38332b; /* soft warm hairline */
+  --input: #38332b;
+  --ring: oklch(72% 0.12 36.259);
 
-  /* Accent Colors - Restrained */
-  --ai-badge: #14b8a6;
-  --fullstack-badge: #f97316;
-  --automation-badge: #818cf8;
+  --ai-badge: oklch(72% 0.12 36.259);
+  --fullstack-badge: #f1ede4;
+  --automation-badge: #a8a195;
 }
 
 @theme inline {
@@ -124,6 +123,14 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(167, 139, 250, 0.3);
-  color: #f0f0f8;
+  background: oklch(26.6% 0.079 36.259 / 0.22); /* brand brown */
+  color: inherit;
+}
+
+/* Editorial helpers */
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+.hairline {
+  border-color: var(--foreground);
 }

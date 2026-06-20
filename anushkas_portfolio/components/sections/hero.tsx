@@ -1,10 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Send, FileText, StopCircle } from "lucide-react";
+import { ArrowRight, Send, FileText, StopCircle } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { WordReveal, CountUp, Reveal } from "@/components/motion";
+
+type Metric = {
+  value?: number;
+  prefix?: string;
+  suffix?: string;
+  display?: string;
+  label: string;
+  sub: string;
+};
+
+const metrics: Metric[] = [
+  { value: 35, suffix: "+", label: "Systems shipped", sub: "production, end-to-end" },
+  { value: 70, prefix: "~", suffix: "%", label: "Manual work cut", sub: "AI Chatbot System" },
+  { display: "60–80%", label: "Efficiency gain", sub: "Invoice Extraction" },
+  { value: 40, prefix: "~", suffix: "%", label: "Perf improved", sub: "system-wide" },
+];
 
 const SUGGESTED_PROMPTS = [
   "What kind of systems do you build?",
@@ -109,157 +125,162 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col gap-12 pt-8">
+    <section className="relative flex flex-col gap-16 pt-4">
       {/* Name & Title */}
-      <div className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
-        <div className="flex flex-col gap-4 flex-1">
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 text-[10px] font-mono font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              <Sparkles size={11} className="text-primary" />
-              Product & AI Systems Engineer · Mumbai
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 text-[10px] font-bold text-primary uppercase tracking-widest">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Open to Roles
-              </span>
-              <span className="text-[10px] font-mono text-muted-foreground">
-                Freelance · Full-Time · Remote
-              </span>
-            </div>
+      <div className="flex flex-col gap-10 border-b border-border pb-12 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-1 flex-col gap-6">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span>Product &amp; AI Systems Engineer · Mumbai</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 font-bold text-primary">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+              Open to Roles
+            </span>
           </div>
-          <h1 className="font-script max-w-2xl text-5xl text-foreground md:text-6xl lg:text-7xl leading-[1.15]">
-            Building systems that make operations{" "}
-            <span className="text-primary">invisible.</span>
+
+          <h1 className="max-w-4xl text-[clamp(2rem,6.5vw,5.5rem)] font-black uppercase leading-[0.95] tracking-tight [hyphens:auto] [overflow-wrap:break-word]">
+            <WordReveal
+              text="Building systems that make operations invisible."
+              emphasis="invisible."
+              emphasisClassName="text-primary"
+            />
           </h1>
-          <p className="max-w-lg text-sm text-muted-foreground md:text-base leading-relaxed">
+
+          <p className="max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
             I build AI automation pipelines, operational platforms, and internal
-            tools that remove manual work from real business processes.
-            35+ production systems shipped.
+            tools that remove manual work from real business processes. 35+
+            production systems shipped.
           </p>
-          <div className="flex items-center gap-4 mt-2">
+
+          <div className="flex items-center gap-4">
             <a
               href="https://flowcv.com/resume/ebu6gfqrs0sp"
-
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:brightness-110"
             >
-              <FileText size={16} />
+              <FileText size={15} />
               Download Resume
             </a>
           </div>
         </div>
 
-        {/* Profile Photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-          className="relative group shrink-0"
-        >
-          <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary to-[#2dd4bf] opacity-30 blur-2xl group-hover:opacity-50 transition-opacity duration-500" />
-          <div className="relative h-44 w-44 md:h-72 md:w-72 overflow-hidden rounded-full border-2 border-primary/20 bg-muted shadow-2xl transition-all duration-500 group-hover:border-primary/50 group-hover:scale-[1.02]">
+        {/* Profile Photo — square, hard frame, editorial grayscale */}
+        <Reveal className="shrink-0" y={0}>
+          <div className="relative h-44 w-44 overflow-hidden rounded-2xl border border-border bg-muted md:h-64 md:w-64">
             <Image
               src="/image.png"
               alt="Anushka Sagvekar"
               fill
-              sizes="(max-width: 768px) 176px, 288px"
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              sizes="(max-width: 768px) 176px, 256px"
+              className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
               priority
             />
           </div>
+        </Reveal>
+      </div>
 
-          <div className="absolute bottom-4 right-4 flex items-center justify-center h-12 w-12 rounded-full bg-card border border-border shadow-xl">
-            <Sparkles size={20} className="text-primary" />
-          </div>
-        </motion.div >
-      </div >
-
-      {/* Attention-Grabbing AI Assistant Section */}
-      < motion.div
-        initial={{ opacity: 0, scale: 0.95 }
-        }
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
-        className="relative overflow-hidden rounded-3xl border border-border bg-card/30 p-6 md:p-8 backdrop-blur-md"
+      {/* Metrics — hard Swiss grid */}
+      <Reveal
+        className="grid grid-cols-2 overflow-hidden rounded-2xl border border-border md:grid-cols-4"
+        stagger={0.08}
       >
-        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
-
-        <div className="relative flex flex-col gap-8">
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <h3 className="text-sm font-bold text-foreground">
-                Chat with Anushka
-              </h3>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
-                I&apos;m here to answer questions about my work
-              </p>
+        {metrics.map((metric, i) => (
+          <div
+            key={metric.label}
+            className={`p-6 ${
+              i !== 0 ? "border-border md:border-l" : ""
+            } ${i >= 2 ? "border-t border-border md:border-t-0" : ""}`}
+          >
+            {metric.display ? (
+              <span className="block text-4xl font-black tracking-tighter md:text-5xl">
+                {metric.display}
+              </span>
+            ) : (
+              <CountUp
+                value={metric.value!}
+                prefix={metric.prefix}
+                suffix={metric.suffix}
+                className="block text-4xl font-black tracking-tighter md:text-5xl"
+              />
+            )}
+            <div className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+              {metric.label}
             </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setMessages(INITIAL_MESSAGES)}
-                className="text-[10px] font-bold text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
-              >
-                Clear
-              </button>
-              <div className="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full">
-                <span
-                  className={`h-1.5 w-1.5 rounded-full bg-primary ${
-                    isStreaming ? "animate-pulse" : ""
-                  }`}
-                />
-                <span className="text-[10px] font-bold text-primary uppercase">
-                  {isStreaming ? "Typing..." : "Active"}
-                </span>
-              </div>
+            <div className="mt-1 text-xs text-muted-foreground">{metric.sub}</div>
+          </div>
+        ))}
+      </Reveal>
+
+      {/* AI Assistant */}
+      <div className="overflow-hidden rounded-2xl border border-border bg-card">
+        <div className="flex items-center justify-between border-b border-border px-6 py-4">
+          <div className="flex flex-col">
+            <h3 className="font-mono text-sm font-bold uppercase tracking-[0.18em]">
+              Chat with Anushka
+            </h3>
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              Ask about my work
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setMessages(INITIAL_MESSAGES)}
+              className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-primary"
+            >
+              Clear
+            </button>
+            <div className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5">
+              <span
+                className={`h-1.5 w-1.5 rounded-full bg-primary ${
+                  isStreaming ? "animate-pulse" : ""
+                }`}
+              />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                {isStreaming ? "Typing" : "Active"}
+              </span>
             </div>
           </div>
+        </div>
 
+        <div className="flex flex-col gap-8 p-6 md:p-8">
           {/* Message thread */}
-          <div className="flex flex-col gap-4 max-h-72 overflow-y-auto pr-1 scrollbar-thin">
+          <div className="scrollbar-thin flex max-h-72 flex-col gap-4 overflow-y-auto pr-1">
             {messages.map((msg, idx) => (
               <div key={idx} className="flex gap-3">
                 <div
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${msg.role === "assistant"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground"
-                    }`}
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-mono text-xs font-bold ${
+                    msg.role === "assistant"
+                      ? "bg-primary text-primary-foreground"
+                      : "border border-border text-muted-foreground"
+                  }`}
                 >
                   {msg.role === "assistant" ? "A" : "U"}
                 </div>
                 {msg.role === "assistant" ? (
-                  <div className="rounded-2xl bg-muted/50 p-4 text-sm leading-relaxed text-foreground max-w-[85%]">
+                  <div className="max-w-[85%] rounded-xl border border-border bg-secondary p-4 text-sm leading-relaxed">
                     {msg.content ||
                       (isStreaming && idx === messages.length - 1 ? (
-                        <span className="inline-flex gap-1 items-center">
-                          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:0ms]" />
-                          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:150ms]" />
-                          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground animate-bounce [animation-delay:300ms]" />
+                        <span className="inline-flex items-center gap-1">
+                          <span className="h-1.5 w-1.5 animate-bounce bg-muted-foreground [animation-delay:0ms]" />
+                          <span className="h-1.5 w-1.5 animate-bounce bg-muted-foreground [animation-delay:150ms]" />
+                          <span className="h-1.5 w-1.5 animate-bounce bg-muted-foreground [animation-delay:300ms]" />
                         </span>
                       ) : null)}
-                    {/* Show project link hint when relevant */}
                     {msg.content.toLowerCase().includes("voice-to-form") && (
                       <Link
                         href="/projects/voice-to-form"
-                        className="mt-2 inline-flex items-center gap-1 text-primary hover:underline text-xs"
+                        className="mt-2 inline-flex items-center gap-1 text-xs text-primary hover:underline"
                       >
                         See the case study <ArrowRight size={12} />
                       </Link>
                     )}
                   </div>
                 ) : (
-                  <div className="text-sm text-foreground self-center">
-                    {msg.content}
-                  </div>
+                  <div className="self-center text-sm">{msg.content}</div>
                 )}
               </div>
             ))}
-            {error && (
-              <p className="text-xs text-destructive pl-11">{error}</p>
-            )}
+            {error && <p className="pl-11 text-xs text-destructive">{error}</p>}
             <div ref={bottomRef} />
           </div>
 
@@ -271,7 +292,7 @@ export function Hero() {
                   key={prompt}
                   onClick={() => sendMessage(prompt)}
                   disabled={isStreaming}
-                  className="rounded-full border border-border bg-muted/50 px-3 py-1.5 text-[11px] text-muted-foreground transition-all hover:border-primary/30 hover:text-foreground hover:bg-muted disabled:opacity-50"
+                  className="rounded-full border border-border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground transition-all hover:border-primary hover:text-foreground disabled:opacity-50"
                 >
                   {prompt}
                 </button>
@@ -282,19 +303,20 @@ export function Hero() {
           {/* Input row */}
           <div className="relative flex items-center">
             <input
+              ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={isStreaming}
               placeholder="Ask about my projects, stack, or experience..."
-              className="h-14 w-full rounded-2xl border border-border bg-background px-6 pr-32 text-sm outline-none transition-all focus:border-primary/50 disabled:opacity-60"
+              className="h-14 w-full rounded-xl border border-border bg-background px-5 pr-32 text-sm outline-none transition-all focus:border-primary disabled:opacity-60"
             />
             <div className="absolute right-2 flex items-center gap-2">
               {isStreaming ? (
                 <button
                   onClick={handleStop}
-                  className="flex h-10 items-center gap-2 rounded-xl border border-border bg-muted px-4 text-xs font-bold text-muted-foreground transition-all hover:text-foreground"
+                  className="flex h-10 items-center gap-2 rounded-lg border border-border bg-background px-4 font-mono text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground transition-all hover:text-foreground"
                 >
                   <StopCircle size={14} />
                   Stop
@@ -303,7 +325,7 @@ export function Hero() {
                 <button
                   onClick={() => sendMessage(input)}
                   disabled={!input.trim()}
-                  className="flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-xs font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100"
+                  className="flex h-10 items-center gap-2 rounded-lg bg-primary px-4 font-mono text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground transition-all hover:brightness-110 disabled:opacity-50"
                 >
                   Send <Send size={12} />
                 </button>
@@ -311,7 +333,7 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </motion.div >
-    </section >
+      </div>
+    </section>
   );
 }

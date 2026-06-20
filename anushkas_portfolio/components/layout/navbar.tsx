@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { FileText, Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Logo } from "./logo";
 
 const links = [
   { label: "Home", href: "/" },
@@ -25,15 +26,13 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed right-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-md md:left-16 md:w-auto">
+    <header className="fixed right-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b border-border bg-background/85 px-6 backdrop-blur-md md:left-16 md:w-auto">
       <div className="flex items-center gap-4">
-        <Link href="/" className="text-lg font-bold tracking-tight text-foreground">
-          Anushka<span className="text-primary">.Studio</span>
-        </Link>
+        <Logo size="sm" />
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden items-center gap-8 md:flex">
+      <nav className="hidden items-center gap-7 md:flex">
         {links.map((link) => {
           const isActive = pathname === link.href;
           return (
@@ -41,35 +40,32 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-foreground",
-                isActive ? "text-foreground" : "text-muted-foreground"
+                "font-mono text-[11px] uppercase tracking-[0.18em] transition-colors hover:text-foreground",
+                isActive ? "text-primary" : "text-muted-foreground"
               )}
             >
               {link.label}
-              {isActive && (
-                <div className="mt-1 h-0.5 w-full rounded-full bg-primary" />
-              )}
             </Link>
           );
         })}
       </nav>
 
-      <div className="flex items-center gap-4">
-        {/* Theme Toggle (Universal visibility) */}
+      <div className="flex items-center gap-3">
+        {/* Theme Toggle */}
         <button
           onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground hover:scale-105 active:scale-95"
+          className="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           aria-label="Toggle theme"
         >
-          <Sun size={20} className="hidden dark:block" />
-          <Moon size={20} className="block dark:hidden" />
+          <Sun size={16} className="hidden dark:block" />
+          <Moon size={16} className="block dark:hidden" />
         </button>
 
         <a
           href="https://flowcv.com/resume/ebu6gfqrs0sp"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-[10px] font-bold text-primary transition-all hover:bg-primary/20 uppercase tracking-widest"
+          className="hidden items-center gap-1.5 rounded-xl bg-primary px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition-all hover:brightness-110 md:flex"
         >
           <FileText size={12} />
           <span>Resume</span>
@@ -78,20 +74,16 @@ export function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground md:hidden"
+          aria-label="Toggle menu"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+          {isOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
-
-        <span className="hidden items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-muted-foreground md:flex">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500/50" />
-          Mumbai, IN
-        </span>
       </div>
 
       {/* Mobile Navigation Dropdown */}
       {isOpen && (
-        <div className="absolute left-0 top-16 w-full border-b border-border bg-background p-6 shadow-xl md:hidden">
+        <div className="absolute left-0 top-16 w-full border-b border-border bg-background p-6 md:hidden">
           <nav className="flex flex-col gap-4">
             {links.map((link) => {
               const isActive = pathname === link.href;
@@ -101,7 +93,7 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "text-lg font-medium transition-colors",
+                    "font-mono text-sm uppercase tracking-[0.18em] transition-colors",
                     isActive ? "text-primary" : "text-muted-foreground"
                   )}
                 >
@@ -113,7 +105,7 @@ export function Navbar() {
               href="https://flowcv.com/resume/ebu6gfqrs0sp"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary/10 py-3 text-sm font-bold text-primary"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-primary py-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground"
             >
               <FileText size={18} />
               Resume

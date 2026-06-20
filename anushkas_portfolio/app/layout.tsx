@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Yellowtail } from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/components/layout/main-layout";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Preloader } from "@/components/preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,7 +68,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${yellowtail.variable} font-sans bg-background text-foreground min-h-screen selection:bg-primary/20`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <Preloader />
           <MainLayout>{children}</MainLayout>
         </ThemeProvider>
       </body>
